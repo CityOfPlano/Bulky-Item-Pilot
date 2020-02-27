@@ -13,11 +13,24 @@ pipeline {
                 junit 'tmp/tests.xml'
             }
         }
-        stage('Build Artifact') {
+        stage('Build Distributable') {
             steps {
                sh label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig.json'
                sh label: 'Webpack', script: 'node ./node_modules/webpack-cli/bin/cli.js'
             }
         }
+        stage('Build Artifact') {
+             steps {
+                sh label: 'Rename Distributable', script: 'mv ./artifact/BulkyItemsPickupUtilityRoutingService.js ./artifact/index.js'
+                sh label: 'ZIP Distributable', script: 'zip -j ./artifact/BulkyItemsPickupUtilityRoutingService.zip ./artifact/index.js'
+                sh label: 'Rename Distributable', script: 'mv ./artifact/index.js ./artifact/BulkyItemsPickupUtilityRoutingService.js'
+             }
+        }
+        stage('Deploy Artifact to Staging') {
+             steps {
+                sh label: 'AWS Lambda', script: 'aws lambda update-function-code --function-name UtilityRoutingService --zip-file ./artifact/BulkyItemsPickupUtilityRoutingService.zip'
+             }
+        }
+
    }
 }
