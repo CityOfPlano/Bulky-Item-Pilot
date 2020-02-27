@@ -1,0 +1,10 @@
+.idea
+*.iml
+out
+gen
+tmp
+.DS_Store
+.nyc_output
+node_modules
+release
+aws
