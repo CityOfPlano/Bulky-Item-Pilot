@@ -2,7 +2,7 @@ import {Example} from "../lib/Example";
 
 exports.handler = async (event) => {
 
-    let example = new Example("Test change SCM");
+    let example = new Example("Test change SCM v2");
 
     const response = {
         statusCode: 200,
