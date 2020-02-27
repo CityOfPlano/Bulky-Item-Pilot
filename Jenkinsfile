@@ -2,7 +2,7 @@ node {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git credentialsId: 'GitHub', url: 'https://github.com/arkamedus/plano-core-bulky-items-pilot.git'
+      //git credentialsId: 'GitHub', url: 'https://github.com/arkamedus/plano-core-bulky-items-pilot.git'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.
