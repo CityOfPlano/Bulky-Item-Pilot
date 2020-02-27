@@ -2,7 +2,7 @@ import {Example} from "../lib/Example";
 
 exports.handler = async (event) => {
 
-    let example = new Example("Mom");
+    let example = new Example("Hello World");
 
     const response = {
         statusCode: 200,
