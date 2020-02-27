@@ -10,13 +10,13 @@ const common = {
 };
 
 const backend = {
-    entry: [
-        './tmp/service/BulkyItemsPickupUtilityRoutingService.js'
-    ],
+    entry: {
+        BulkyItemsPickupUtilityRoutingService: './tmp/service/BulkyItemsPickupUtilityRoutingService.js'
+    },
     output: {
         path: path.join(__dirname, 'artifact'),
-        libraryTarget: "var",
-        filename: 'bundle-backend.js'
+        libraryTarget: "umd",
+        filename: '[name].js'
     },
     target: 'node',
     node: {
