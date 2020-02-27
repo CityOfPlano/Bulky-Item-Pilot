@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Deploy Artifact to Staging') {
              steps {
-                sh label: 'AWS Lambda', script: 'aws lambda update-function-code --function-name UtilityRoutingService --zip-file ./artifact/BulkyItemsPickupUtilityRoutingService.zip'
+                sh label: 'AWS Lambda', script: 'aws lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
              }
         }
 
