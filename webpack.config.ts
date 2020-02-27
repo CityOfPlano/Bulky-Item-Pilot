@@ -10,6 +10,7 @@ const common = {
 };
 
 const backend = {
+    mode: 'none',
     entry: {
         BulkyItemsPickupUtilityRoutingService: './tmp/service/BulkyItemsPickupUtilityRoutingService.js'
     },
