@@ -27,12 +27,9 @@ pipeline {
              }
         }
         stage('Deploy Artifact to Staging') {
-            timeout(time: 5, unit: 'MINUTES')
-            {
                 steps {
                     sh label: 'AWS Lambda', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
                 }
-             }
         }
 
    }
