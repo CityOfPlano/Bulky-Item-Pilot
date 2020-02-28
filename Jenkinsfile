@@ -39,8 +39,17 @@ pipeline {
              }
         }
         stage('Deploy Services to Staging') {
-            steps {
-                sh label: 'Utility Routing', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
+            parallel {
+                stage('Lambda') {
+                    steps {
+                        sh label: 'Utility Routing', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
+                    }
+                }
+                stage('S3 & Static') {
+                    steps {
+                        sh label: 'Static S3', script: 'aws s3 sync ./static s3://plano-core-bulky-items-pilot'
+                    }
+                }
             }
         }
         stage('Integration Test') {
