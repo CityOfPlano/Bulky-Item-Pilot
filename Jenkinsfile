@@ -7,10 +7,10 @@ pipeline {
 
         stage('NPM & Setup') {
           steps {
-            sh label: '', script: 'npm install'
+            sh label: 'NPM Install', script: 'npm install'
           }
         }
-        stage('Test') {
+        stage('Unit Test') {
             steps {
                 sh label: 'Mocha', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests.xml --ui bdd */**/*.spec.ts'
                 junit 'tmp/tests.xml'
@@ -39,9 +39,9 @@ pipeline {
              }
         }
         stage('Deploy Artifact to Staging') {
-                steps {
-                    sh label: 'AWS Lambda', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
-                }
+            steps {
+                sh label: 'AWS Lambda', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
+            }
         }
 
    }
