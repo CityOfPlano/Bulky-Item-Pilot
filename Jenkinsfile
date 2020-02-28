@@ -17,13 +17,22 @@ pipeline {
             }
         }
         stage('Build Distributable') {
-            steps {
-               sh label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig.json'
-               sh label: 'Webpack', script: 'node ./node_modules/webpack-cli/bin/cli.js'
+            parallel {
+                stage('TypeScript Services') {
+                    steps {
+                        sh label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-service.json'
+                    }
+                }
+                stage('TypeScript Applications') {
+                    steps {
+                        sh label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-app.json'
+                    }
+                }
             }
         }
         stage('Build Artifact') {
              steps {
+                sh label: 'Webpack', script: 'node ./node_modules/webpack-cli/bin/cli.js'
                 sh label: 'Rename Distributable', script: 'mv ./artifact/BulkyItemsPickupUtilityRoutingService.js ./artifact/index.js'
                 sh label: 'ZIP Distributable', script: 'zip -j ./artifact/BulkyItemsPickupUtilityRoutingService.zip ./artifact/index.js'
                 sh label: 'Rename Distributable', script: 'mv ./artifact/index.js ./artifact/BulkyItemsPickupUtilityRoutingService.js'

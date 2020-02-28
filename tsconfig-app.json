@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ES6",
+    "sourceMap": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "experimentalDecorators": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "outDir" :"tmp",
+    "moduleResolution": "node"
+  },
+  "include": ["lib","app"],
+  "files": [
+    "./node_modules/@types/mocha/index.d.ts",
+    "./node_modules/@types/node/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
