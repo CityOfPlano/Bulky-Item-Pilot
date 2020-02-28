@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                sh label: 'Mocha', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests.xml --ui bdd */**/*.spec.ts'
+                sh label: 'Mocha Unit', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests.xml --ui bdd */**/*.spec.ts'
                 junit 'tmp/tests.xml'
             }
         }
@@ -38,11 +38,16 @@ pipeline {
                 sh label: 'Rename Distributable', script: 'mv ./artifact/index.js ./artifact/BulkyItemsPickupUtilityRoutingService.js'
              }
         }
-        stage('Deploy Artifact to Staging') {
+        stage('Deploy Services to Staging') {
             steps {
-                sh label: 'AWS Lambda', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
+                sh label: 'Utility Routing', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip'
             }
         }
-
+        stage('Integration Test') {
+            steps {
+                sh label: 'Mocha Integration', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests.xml --ui bdd */**/*.integration.ts'
+                junit 'tmp/tests.xml'
+            }
+        }
    }
 }
