@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 const request = require('request');
 
-describe('Example', () => {
+describe('Utility Routing Service', () => {
 
     const options = {
         url : "https://e3yszudju8.execute-api.us-east-2.amazonaws.com/default/UtilityRoutingService/",
@@ -9,7 +9,6 @@ describe('Example', () => {
             'x-api-key':"4rEgaPrXOC9Q8218mPNq49QyhhjgUYT6ViVbprO5"
         }
     };
-
 
     it('should return 200 response', (done) => {
         request(options, function (error, response, body) {

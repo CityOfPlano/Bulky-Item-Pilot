@@ -66,7 +66,7 @@ pipeline {
 
     stage('Save Artifact') {
       steps {
-        archiveArtifacts(artifacts: './artifact/BulkyItemsPickupUtilityRoutingService.zip', caseSensitive: true)
+        archiveArtifacts(artifacts: 'artifact/BulkyItemsPickupUtilityRoutingService.zip', caseSensitive: true)
       }
     }
 
