@@ -1,33 +1,23 @@
-import WizardControlsView from '../../app/view/WizardControlsView.html';
+import {WizardRenderer} from "../interface/WizardRenderer";
 
 export class Wizard {
 
     public steps: Array<WizardStep>;
     public current_index: number;
     public render_target:HTMLElement;
+    public wizard_renderer:WizardRenderer;
 
-    constructor(target : HTMLElement) {
+    constructor(target? : HTMLElement, wizardRenderer?: WizardRenderer) {
         this.steps = [];
         this.current_index = 0;
         this.render_target = target;
+        this.wizard_renderer = wizardRenderer;
     }
 
     render() {
-        let self = this;
-        self.render_target.innerHTML = WizardControlsView + this.getStepFromIndex(this.current_index).step.render(this);
-        this.getStepFromIndex(this.current_index).step.focus(this);
-
-        let wizard_button_back:HTMLFormElement = <HTMLFormElement>document.getElementById("wizard_button_back");
-        if (this.current_index <= 1){
-            wizard_button_back.disabled = true;
-        }else {
-            wizard_button_back.onclick = function () {
-                self.current_index--;
-                self.render();
-            };
+        if (this.wizard_renderer){
+            this.wizard_renderer.render(this);
         }
-        let wizard_button_reset = document.getElementById("wizard_button_reset");
-
     }
 
     addStep(wizard_step: WizardStep) {

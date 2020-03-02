@@ -2,8 +2,10 @@ import {Wizard} from "../lib/controller/Wizard";
 import {StepLoading} from "./wizard/StepLoading";
 import {StepLanding} from "./wizard/StepLanding";
 import {StepCustomerAuth} from "./wizard/StepCustomerAuth";
+import {DomWizardRenderer} from "../lib/controller/DomWizardRenderer";
 
-let wizard = new Wizard(document.body);
+let wizard_renderer = new DomWizardRenderer();
+let wizard = new Wizard(document.body, wizard_renderer);
 
 let step_loading = new StepLoading();
 
