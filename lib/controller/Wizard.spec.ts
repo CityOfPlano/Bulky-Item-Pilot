@@ -30,8 +30,9 @@ describe('Wizard', () => {
     it('should return first step', () => {
         let step = new ExampleStep();
         example.addStep(step);
-        expect(example.getStep()).not.equal(null);
-        expect(example.getStep().render()).equal("Yay!");
+        expect(example.getStep().step).not.equal(null);
+        expect(example.getStep().index).equal(0);
+        expect(example.getStep().step.render()).equal("Yay!");
     });
 
 });

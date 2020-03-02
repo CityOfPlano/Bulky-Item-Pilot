@@ -1,11 +1,17 @@
 import {Wizard} from "../lib/controller/Wizard";
-import {StepLoading} from "../lib/wizard/StepLoading";
+import {StepLoading} from "./wizard/StepLoading";
+import {StepLanding} from "./wizard/StepLanding";
 
 let wizard = new Wizard();
 
 let step_loading = new StepLoading();
 
 wizard.addStep(step_loading);
-console.log(wizard.steps);
+wizard.addStep(new StepLanding());
 
-document.body.innerHTML = wizard.getStep().render();
+wizard.render(document.body);
+
+window.setTimeout(function(){
+    step_loading.has_loaded = true;
+    wizard.render(document.body);
+}, 100);

@@ -24,7 +24,7 @@ pipeline {
 
         stage('TypeScript Applications') {
           steps {
-            sh(label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-app.json')
+            sh(label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig.json')
           }
         }
 
