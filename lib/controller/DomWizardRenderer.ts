@@ -10,15 +10,16 @@ export class DomWizardRenderer implements WizardRenderer{
         wizard.render_target.innerHTML = WizardControlsView + wizard.getStepFromIndex(wizard.current_index).step.render(wizard);
         wizard.getStepFromIndex(wizard.current_index).step.focus(wizard);
 
-        let wizard_button_back:HTMLFormElement = <HTMLFormElement>document.getElementById("wizard_button_back");
+        let wizard_button_back:HTMLButtonElement = <HTMLButtonElement>document.getElementById("wizard_button_back");
+        let wizard_button_reset:HTMLButtonElement = <HTMLButtonElement>document.getElementById("wizard_button_reset");
+
         if (wizard.current_index <= 1){
             wizard_button_back.disabled = true;
+            wizard_button_reset.disabled = true;
         }else {
             wizard_button_back.onclick = function () {
-                wizard.current_index--;
-                wizard.render();
+                wizard.prevStep();
             };
         }
-        let wizard_button_reset = document.getElementById("wizard_button_reset");
     }
 }

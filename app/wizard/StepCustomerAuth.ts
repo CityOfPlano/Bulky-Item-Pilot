@@ -10,7 +10,6 @@ export class StepCustomerAuth implements WizardStep {
     }
 
     focus(wizard:Wizard): void {
-        let self = this;
     }
 
     is_satisfied(): boolean {

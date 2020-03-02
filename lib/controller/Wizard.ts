@@ -30,6 +30,11 @@ export class Wizard {
         this.render();
     }
 
+    prevStep(){
+        this.current_index--;
+        this.render();
+    }
+
     getStep(): WizardStepIndex | null {
         let s = null;
         let i = 0;

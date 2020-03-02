@@ -10,7 +10,6 @@ export class StepLanding implements WizardStep {
     }
 
     focus(wizard:Wizard): void {
-        let self = this;
         let landing_button_start = document.getElementById('landing_button_start');
         landing_button_start.onclick = function(){
             wizard.nextStep();
