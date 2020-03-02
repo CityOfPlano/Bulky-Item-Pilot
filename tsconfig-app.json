@@ -1,8 +1,7 @@
 {
-  /* This config file is a default used by Tests and other Generic Typescript Linting Tools */
   "compilerOptions": {
     "target": "ES5",
-    "module": "commonjs",
+    "module": "ES6",
     "sourceMap": true,
     "typeRoots": [
       "./node_modules/@types",
