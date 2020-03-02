@@ -6,7 +6,7 @@ Getting Started
 All commands should be run from the base / project directory root.
 TypeScript is a strict syntactical superset of JavaScript, and during build phase will generate a coresponding JavaScript file. \
 eg: `Module.ts` > `Module.js` \
-Any JavaScript file matching a TypeScript filename `./src/<name>.ts` > `./src/<name>.js` will be overwritten by the compiled TypeScript.  
+Any JavaScript file matching a TypeScript filename `./src/<name>.ts` > `./tmp/<name>.js` will be overwritten by the compiled TypeScript.  
 
 TypeScript can be run directly as a process using TS-Node, however, this is done primarily for convienience during development, as deployable artifacts will only contain JavaScript. This is done to account for variability on deployment server, if TS-Node can be validated/run on target, use the apropriate build file to accommodate.
 
