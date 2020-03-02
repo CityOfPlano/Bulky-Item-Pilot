@@ -1,9 +1,73 @@
 @import "wizard.scss";
 
+$leading: 18pt;
+$font-size: 12pt;
+$line-height: 14pt;
+$plano-blue: #0a2c74;
+$plano-red: #c30e2d;
+
+
 * {
   box-sizing: border-box;
 }
 
 body, html {
   font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+header, footer, .wizard-content {
+  padding: $leading / 2;
+}
+
+p {
+  line-height: $line-height;
+}
+
+header {
+  border-bottom: 1px solid #eee;
+
+  img {
+    height: $leading;
+    padding: 0;
+    margin: 0;
+    margin-right: $leading/2;
+    display: inline-block;
+    float: left;
+  }
+}
+
+footer {
+  border-top: 1px solid #eee;
+}
+
+.right {
+  float: right;
+}
+
+button {
+  height: $leading;
+  margin: 0;
+  font-size: $font-size*.85;
+  outline: 0;
+  border: 1px solid $plano-blue;
+  background: #fff;
+  -webkit-appearance: none;
+  padding: 2pt $leading/2;
+  border-radius: 4px;
+  color: $plano-blue;
+}
+
+button[disabled] {
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  color: #aaa;
+}
+
+button:hover:not([disabled]) {
+  cursor: pointer;
+  color:#fff;
+  background-color: $plano-blue;
 }
