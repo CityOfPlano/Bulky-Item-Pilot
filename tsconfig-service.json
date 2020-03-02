@@ -4,7 +4,8 @@
     "module": "ES6",
     "sourceMap": true,
     "typeRoots": [
-      "./node_modules/@types"
+      "./node_modules/@types",
+      "./app/html.d.ts"
     ],
     "experimentalDecorators": true,
     "lib": [
@@ -14,7 +15,7 @@
     "outDir" :"tmp",
     "moduleResolution": "node"
   },
-  "include": ["service","lib"],
+  "include": ["service"],
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
     "./node_modules/@types/node/index.d.ts"
