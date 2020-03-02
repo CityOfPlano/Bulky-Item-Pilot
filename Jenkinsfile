@@ -19,6 +19,7 @@ pipeline {
         stage('TypeScript Services') {
           steps {
             sh(label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-service.json')
+            sh(label: 'Include Views', script: 'cp -r ./app/view ./tmp/app')
           }
         }
 

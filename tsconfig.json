@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "module": "ES6",
+    "module": "commonjs",
     "sourceMap": true,
     "typeRoots": [
       "./node_modules/@types",
@@ -18,7 +18,8 @@
   "include": ["lib","app"],
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
-    "./node_modules/@types/node/index.d.ts"
+    "./node_modules/@types/node/index.d.ts",
+    "./node_modules/@types/chai/index.d.ts"
   ],
   "exclude": [
     "node_modules",

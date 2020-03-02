@@ -13,6 +13,14 @@ const frontend = {
         filename: '[name].js'
     },
     target: 'web',
+    module: {
+        rules: [
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
+        ],
+    }
     //"exclude": [
     //    "node_modules"
     //],
