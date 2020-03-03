@@ -24,3 +24,12 @@
   margin-right: $leading / 2;
   display: inline-block;
 }
+
+#auth_input_address {
+  text-transform: uppercase;
+}
+
+.pad-small-bottom {
+  display: block;
+  padding-bottom: $leading / 2;
+}

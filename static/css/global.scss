@@ -26,6 +26,10 @@ p {
   line-height: $line-height;
 }
 
+p > *:last-child {
+  margin-bottom: 0;
+}
+
 header {
   border-bottom: 1px solid #eee;
 
@@ -34,6 +38,10 @@ header {
     padding: 0;
     margin: 0;
     display: inline-block;
+  }
+
+  button {
+    width: 100px;
   }
 }
 
@@ -88,6 +96,7 @@ button:hover:not([disabled]) {
 .warning {
   border: 1px solid $plano-red;
   color: $plano-red;
+  background-color: #fffcfc;
 }
 
 button.warning:hover:not([disabled]) {

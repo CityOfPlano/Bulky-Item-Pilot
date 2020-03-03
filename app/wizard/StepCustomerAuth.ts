@@ -29,7 +29,7 @@ export class StepCustomerAuth implements WizardStep {
 
             auth_input_address.onkeyup = function () {
                 ClearValidationClass(auth_input_address);
-                wizard.getState().BillingAccountAddress = auth_input_address.value;
+                wizard.getState().BillingAccountAddress = auth_input_address.value.toUpperCase();
                 self.update(wizard.getState());
             };
 
