@@ -15,6 +15,14 @@
   padding: $leading / 2;
 }
 
+#overlay > div {
+  height: 100%;
+}
+
+#overlay > .flex > div > svg {
+  color: #aaa;
+}
+
 .img-logo {
   height: $leading;
   padding: 0;
