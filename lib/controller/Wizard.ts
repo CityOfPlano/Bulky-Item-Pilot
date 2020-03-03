@@ -1,4 +1,5 @@
 import {WizardRenderer} from "../interface/WizardRenderer";
+import {ClientWizardState} from "../WizardState";
 
 export class Wizard {
 
@@ -6,12 +7,14 @@ export class Wizard {
     public current_index: number;
     public render_target: HTMLElement;
     public wizard_renderer: WizardRenderer;
+    private wizard_state: ClientWizardState;
 
     constructor(target?: HTMLElement, wizardRenderer?: WizardRenderer) {
         this.steps = [];
         this.current_index = 0;
         this.render_target = target;
         this.wizard_renderer = wizardRenderer;
+        this.wizard_state = null;
     }
 
     render() {
@@ -57,6 +60,18 @@ export class Wizard {
             step: this.steps[index],
             index: index
         } : null)
+    }
+
+    useState(state: ClientWizardState) {
+        this.wizard_state = state;
+    }
+
+    getState() {
+        return this.wizard_state;
+    }
+
+    getRenderer():WizardRenderer|null{
+        return this.wizard_renderer;
     }
 
 }

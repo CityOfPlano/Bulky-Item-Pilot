@@ -1,0 +1,105 @@
+$leading: 18pt;
+$font-size: 12pt;
+$line-height: 14pt;
+$plano-blue: #0a2c74;
+$plano-red: #c30e2d;
+$border-radius: 4px;
+
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+header, footer, .wizard-content {
+  padding: $leading / 2;
+}
+
+p {
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+header {
+  border-bottom: 1px solid #eee;
+
+  img {
+    height: $leading;
+    padding: 0;
+    margin: 0;
+    margin-right: $leading/2;
+    display: inline-block;
+    float: left;
+  }
+}
+
+footer {
+  border-top: 1px solid #eee;
+  font-size: 11pt;
+}
+
+.right {
+  float: right;
+}
+
+label{
+  font-size: 0.8em;
+  color: #333;
+  font-style: oblique;
+  display: block;
+}
+
+input, textarea {
+  margin-bottom: $line-height;
+  width: 100%;
+  max-width: 620px;
+  padding: 4pt;
+  border: 1px solid #aaaaaa;
+}
+
+
+button {
+  height: $leading;
+  margin: 0;
+  font-size: $font-size*.85;
+  outline: 0;
+  border: 1px solid $plano-blue;
+  background: #fff;
+  -webkit-appearance: none;
+  padding: 2pt $leading/2;
+  border-radius: 4px;
+  color: $plano-blue;
+}
+
+button:hover:not([disabled]) {
+  cursor: pointer;
+  color:#fff;
+  background-color: $plano-blue;
+}
+
+.warning {
+  border: 1px solid $plano-red;
+  color: $plano-red;
+}
+
+button.warning:hover:not([disabled]) {
+  background-color: $plano-red;
+}
+
+
+button[disabled] {
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  color: #aaa;
+}
+
+.tip-text {
+  font-size: 10pt;
+  color: #aaa;
+}

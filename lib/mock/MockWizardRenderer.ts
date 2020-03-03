@@ -8,4 +8,10 @@ export class MockWizardRenderer implements WizardRenderer{
     render(wizard: Wizard){
         return wizard.getStepFromIndex(wizard.current_index).step.render(wizard);
     }
+
+    clearModal(): void {
+    }
+
+    showModal(html: string): void {
+    }
 }

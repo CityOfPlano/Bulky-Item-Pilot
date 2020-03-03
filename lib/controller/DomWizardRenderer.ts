@@ -6,10 +6,10 @@ import {WizardRenderer} from "../interface/WizardRenderer";
 export class DomWizardRenderer implements WizardRenderer {
 
     constructor() {
-
     }
 
     render(wizard: Wizard) {
+        this.clearModal();
         wizard.render_target.innerHTML = WizardControlsView + wizard.getStepFromIndex(wizard.current_index).step.render(wizard) + WizardFooterView;
         wizard.getStepFromIndex(wizard.current_index).step.focus(wizard);
 
@@ -23,6 +23,22 @@ export class DomWizardRenderer implements WizardRenderer {
             wizard_button_back.onclick = function () {
                 wizard.prevStep();
             };
+        }
+    }
+
+    showModal(html:string){
+        let overlay = document.getElementById("overlay");
+        if (overlay) {
+            overlay.innerHTML = html;
+            overlay.style.display = "block";
+        }
+    }
+
+    clearModal(){
+        let overlay = document.getElementById("overlay");
+        if (overlay) {
+            overlay.innerHTML = "";
+            overlay.style.display = "none";
         }
     }
 

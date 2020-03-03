@@ -1,91 +1,24 @@
 @import "normalize.scss";
-@import "wizard.scss";
-
-$leading: 18pt;
-$font-size: 12pt;
-$line-height: 14pt;
-$plano-blue: #0a2c74;
-$plano-red: #c30e2d;
+@import "global.scss";
 
 
-* {
-  box-sizing: border-box;
-}
-
-body, html {
-  font-family: sans-serif;
-  padding: 0;
-  margin: 0;
-  position: relative;
-}
-
-header, footer, .wizard-content {
-  padding: $leading / 2;
-}
-
-p {
-  font-size: $font-size;
-  line-height: $line-height;
-}
-
-header {
-  border-bottom: 1px solid #eee;
-
-  img {
-    height: $leading;
-    padding: 0;
-    margin: 0;
-    margin-right: $leading/2;
-    display: inline-block;
-    float: left;
-  }
-}
-
-footer {
-  border-top: 1px solid #eee;
-  font-size: 11pt;
-}
-
-.right {
+#wizard_button_reset {
   float: right;
 }
 
-button {
+#overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.96);
+  display: none;
+  padding: $leading / 2;
+}
+
+.img-logo {
   height: $leading;
+  padding: 0;
   margin: 0;
-  font-size: $font-size*.85;
-  outline: 0;
-  border: 1px solid $plano-blue;
-  background: #fff;
-  -webkit-appearance: none;
-  padding: 2pt $leading/2;
-  border-radius: 4px;
-  color: $plano-blue;
-}
-
-button:hover:not([disabled]) {
-  cursor: pointer;
-  color:#fff;
-  background-color: $plano-blue;
-}
-
-button.warning {
-  border: 1px solid $plano-red;
-  color: $plano-red;
-}
-
-button.warning:hover:not([disabled]) {
-  background-color: $plano-red;
-}
-
-
-button[disabled] {
-  border: 1px solid #ddd;
-  background-color: #fafafa;
-  color: #aaa;
-}
-
-.tip-text {
-  font-size: 10pt;
-  color: #aaa;
+  margin-right: $leading / 2;
+  display: inline-block;
 }
