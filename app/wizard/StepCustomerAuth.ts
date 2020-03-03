@@ -3,8 +3,6 @@ import StepCustomerAuthView from '../view/StepCustomerAuthView.html';
 
 export class StepCustomerAuth implements WizardStep {
 
-    has_landed = false;
-
     render(wizard:Wizard): string {
         return StepCustomerAuthView;
     }
@@ -13,6 +11,7 @@ export class StepCustomerAuth implements WizardStep {
     }
 
     is_satisfied(): boolean {
-        return this.has_landed;
+        return false;
     }
+
 }

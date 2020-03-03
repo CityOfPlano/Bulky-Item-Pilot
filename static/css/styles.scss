@@ -1,3 +1,4 @@
+@import "normalize.scss";
 @import "wizard.scss";
 
 $leading: 18pt;
@@ -23,6 +24,7 @@ header, footer, .wizard-content {
 }
 
 p {
+  font-size: $font-size;
   line-height: $line-height;
 }
 
@@ -41,6 +43,7 @@ header {
 
 footer {
   border-top: 1px solid #eee;
+  font-size: 11pt;
 }
 
 .right {
@@ -60,14 +63,29 @@ button {
   color: $plano-blue;
 }
 
+button:hover:not([disabled]) {
+  cursor: pointer;
+  color:#fff;
+  background-color: $plano-blue;
+}
+
+button.warning {
+  border: 1px solid $plano-red;
+  color: $plano-red;
+}
+
+button.warning:hover:not([disabled]) {
+  background-color: $plano-red;
+}
+
+
 button[disabled] {
   border: 1px solid #ddd;
   background-color: #fafafa;
   color: #aaa;
 }
 
-button:hover:not([disabled]) {
-  cursor: pointer;
-  color:#fff;
-  background-color: $plano-blue;
+.tip-text {
+  font-size: 10pt;
+  color: #aaa;
 }

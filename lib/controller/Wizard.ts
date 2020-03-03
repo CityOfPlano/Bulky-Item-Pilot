@@ -4,10 +4,10 @@ export class Wizard {
 
     public steps: Array<WizardStep>;
     public current_index: number;
-    public render_target:HTMLElement;
-    public wizard_renderer:WizardRenderer;
+    public render_target: HTMLElement;
+    public wizard_renderer: WizardRenderer;
 
-    constructor(target? : HTMLElement, wizardRenderer?: WizardRenderer) {
+    constructor(target?: HTMLElement, wizardRenderer?: WizardRenderer) {
         this.steps = [];
         this.current_index = 0;
         this.render_target = target;
@@ -15,7 +15,7 @@ export class Wizard {
     }
 
     render() {
-        if (this.wizard_renderer){
+        if (this.wizard_renderer) {
             this.wizard_renderer.render(this);
         }
     }
@@ -24,35 +24,35 @@ export class Wizard {
         this.steps.push(wizard_step);
     }
 
-    nextStep(){
+    nextStep() {
         this.current_index++;
         this.current_index = Math.min(this.current_index, this.steps.length);
         this.render();
     }
 
-    prevStep(){
+    prevStep() {
         this.current_index--;
         this.render();
     }
 
     getStep(): WizardStepIndex | null {
-        let s = null;
-        let i = 0;
+        let _step = null;
+        let _index = 0;
         this.steps.forEach(function (step: WizardStep) {
-            if (!step.is_satisfied() && !s) {
-                s = step;
+            if (!step.is_satisfied() && !_step) {
+                _step = step;
                 return;
             }
-            i++;
+            _index++;
         });
-        this.current_index = i;
-        return (!!s ? {
-            step: s,
-            index: i
+        this.current_index = _index;
+        return (!!_step ? {
+            step: _step,
+            index: _index
         } : null);
     }
 
-    getStepFromIndex(index: number) {
+    getStepFromIndex(index: number): WizardStepIndex | null {
         return (!!this.steps[index] ? {
             step: this.steps[index],
             index: index
