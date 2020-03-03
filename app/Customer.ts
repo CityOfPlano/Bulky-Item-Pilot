@@ -20,4 +20,4 @@ wizard.render();
 window.setTimeout(function(){
     step_loading.has_loaded = true;
     wizard.nextStep();
-}, 720);
+}, 1);
