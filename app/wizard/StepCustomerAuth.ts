@@ -72,8 +72,8 @@ export class StepCustomerAuth implements WizardStep {
 
     }
 
-    is_satisfied(): boolean {
-        return false;
+    is_satisfied(wizard: Wizard): boolean {
+        return wizard.getState().BillingUtilityIsAuthenticated||false;
     }
 
 }

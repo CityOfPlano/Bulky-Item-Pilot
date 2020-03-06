@@ -34,15 +34,17 @@ export class Wizard {
     }
 
     prevStep() {
+        console.log("goTo Previous");
         this.current_index--;
         this.render();
     }
 
     getStep(): WizardStepIndex | null {
+        let self = this;
         let _step = null;
         let _index = 0;
         this.steps.forEach(function (step: WizardStep) {
-            if (!step.is_satisfied() && !_step) {
+            if (!step.is_satisfied(self) && !_step) {
                 _step = step;
                 return;
             }
@@ -81,7 +83,7 @@ export interface WizardStep {
 
     focus(wizard: Wizard): void;
 
-    is_satisfied(): boolean;
+    is_satisfied(wizard: Wizard): boolean;
 }
 
 export interface WizardStepIndex {

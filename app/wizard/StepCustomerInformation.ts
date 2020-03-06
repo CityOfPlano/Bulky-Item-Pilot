@@ -13,7 +13,7 @@ export class StepCustomerInformation implements WizardStep {
         }
     }
 
-    is_satisfied(): boolean {
+    is_satisfied(wizard: Wizard): boolean {
         return false;
     }
 

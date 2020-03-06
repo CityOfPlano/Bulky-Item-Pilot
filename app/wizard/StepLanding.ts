@@ -16,7 +16,7 @@ export class StepLanding implements WizardStep {
         }
     }
 
-    is_satisfied(): boolean {
+    is_satisfied(wizard: Wizard): boolean {
         return this.has_landed;
     }
 

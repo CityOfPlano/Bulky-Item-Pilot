@@ -1,4 +1,4 @@
-import {WizardStep} from "../../lib/controller/Wizard";
+import {Wizard, WizardStep} from "../../lib/controller/Wizard";
 import StepLoadingView from '../view/StepLoadingView.html';
 
 export class StepLoading implements WizardStep {
@@ -13,7 +13,7 @@ export class StepLoading implements WizardStep {
 
     }
 
-    is_satisfied(): boolean {
+    is_satisfied(wizard: Wizard): boolean {
         return this.has_loaded;
     }
 
