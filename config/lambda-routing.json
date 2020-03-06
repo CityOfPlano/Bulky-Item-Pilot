@@ -1,6 +1,3 @@
 {
-  "url": "https://e3yszudju8.execute-api.us-east-2.amazonaws.com/default/UtilityRoutingService/",
-  "headers": {
-    "x-api-key": "4rEgaPrXOC9Q8218mPNq49QyhhjgUYT6ViVbprO5"
-  }
+  "url": "https://nwqwojwktf.execute-api.us-east-1.amazonaws.com/default/BulkyItemsUtilityRoutingService"
 }
