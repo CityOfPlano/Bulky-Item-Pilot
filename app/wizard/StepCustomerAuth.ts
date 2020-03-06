@@ -3,14 +3,16 @@ import StepCustomerAuthView from '../view/StepCustomerAuthView.html';
 import ModalLoadingView from '../view/ModalLoadingView.html';
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass, ClearValidationClass, ValidateNumberField} from "../../lib/util/ValidateField";
+import {LambdaProvider} from "../../lib/LambdaProvider";
+import {CustomerUtiligyAuth} from "../../lib/interface/CustomerUtiligyAuth";
 
 export class StepCustomerAuth implements WizardStep {
 
-    render(wizard:Wizard): string {
+    render(wizard: Wizard): string {
         return StepCustomerAuthView;
     }
 
-    focus(wizard:Wizard): void {
+    focus(wizard: Wizard): void {
         let self = this;
         let auth_input_account = <HTMLInputElement>document.getElementById("auth_input_account");
         let auth_input_address = <HTMLInputElement>document.getElementById("auth_input_address");
@@ -35,11 +37,18 @@ export class StepCustomerAuth implements WizardStep {
 
             auth_button_next.onclick = function () {
                 wizard.getRenderer().showModal(ModalLoadingView);
-                window.setTimeout(function () {
-                    AddValidationClass(auth_input_account, "warning");
-                    AddValidationClass(auth_input_address, "warning");
-                    wizard.getRenderer().clearModal();
-                }, 1320)
+                let provider = new LambdaProvider();
+
+                provider.postPayload(wizard.getState(), function (data: CustomerUtiligyAuth) {
+                    if (!data.BillingUtilityIsAuthenticated) {
+                        AddValidationClass(auth_input_account, "warning");
+                        AddValidationClass(auth_input_address, "warning");
+                        wizard.getRenderer().clearModal();
+                    } else {
+                        wizard.nextStep();
+                    }
+                });
+
             };
 
             this.update(wizard.getState());
@@ -47,14 +56,14 @@ export class StepCustomerAuth implements WizardStep {
 
     }
 
-    update(w: ClientWizardState){
+    update(w: ClientWizardState) {
         let auth_button_next = <HTMLButtonElement>document.getElementById("auth_button_next");
         let auth_button_tip = document.getElementById("auth_button_tip");
 
-        if (ValidateNumberField(w.BillingAccountNumber).success && w.BillingAccountAddress && w.BillingAccountAddress.length >= 3){
+        if (ValidateNumberField(w.BillingAccountNumber).success && w.BillingAccountAddress && w.BillingAccountAddress.length >= 3) {
             auth_button_next.disabled = false;
             auth_button_tip.style.display = "none";
-        }else{
+        } else {
             auth_button_next.disabled = true;
             auth_button_tip.style.display = "inline-block";
         }

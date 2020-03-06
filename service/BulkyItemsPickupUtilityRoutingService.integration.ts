@@ -1,13 +1,15 @@
 import {expect} from 'chai';
+import {CustomerUtiligyAuth} from "../lib/interface/CustomerUtiligyAuth";
+
+const fs = require('fs');
 const request = require('request');
 
 describe('Utility Routing Service', () => {
 
-    const options = {
-        url : "https://e3yszudju8.execute-api.us-east-2.amazonaws.com/default/UtilityRoutingService/",
-        headers : {
-            'x-api-key':"4rEgaPrXOC9Q8218mPNq49QyhhjgUYT6ViVbprO5"
-        }
+    const options = JSON.parse(fs.readFileSync('./config/lambda-routing.json'));
+    options.method = 'POST';
+    options.json = {
+            test: 123
     };
 
     it('should return 200 response', (done) => {
@@ -19,10 +21,37 @@ describe('Utility Routing Service', () => {
     });
 
     it('should return json result', (done) => {
-        request(options, function (error, response, body) {
-            let json = JSON.parse(body);
+        request(options, function (error, response, json) {
             expect(json).not.equal(null);
-            expect(json.resource).equal("/UtilityRoutingService");
+            expect(typeof json.timestamp).equal("number");
+            done();
+        });
+    });
+
+    it('should return bad authentication', (done) => {
+        options.json = {
+                route: "UtilityAuth",
+                BillingAccountNumber: 1234,
+                BillingAccountAddress: "123 main street2"
+        };
+        request(options, function (error, response, json) {
+            expect(json).not.equal(null);
+            expect(typeof json.timestamp).equal("number");
+            expect(json.BillingUtilityIsAuthenticated).equal(undefined);
+            done();
+        });
+    });
+
+    it('should return good authentication', (done) => {
+        options.json = {
+                route: "UtilityAuth",
+                BillingAccountNumber: 123,
+                BillingAccountAddress: "123 main street"
+        };
+        request(options, function (error, response, json) {
+            expect(json).not.equal(null);
+            expect(typeof json.timestamp).equal("number");
+            expect(json.BillingUtilityIsAuthenticated).equal(true);
             done();
         });
     });

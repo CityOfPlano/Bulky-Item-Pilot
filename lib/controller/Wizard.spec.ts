@@ -7,9 +7,10 @@ describe('Wizard', () => {
 
     let w_renderer = new MockWizardRenderer();
 
-    let example = new Wizard(null,w_renderer);
+    let example = new Wizard(null, w_renderer);
 
-    class ExampleStep implements WizardStep{
+    class ExampleStep implements WizardStep {
+
         focus(): void {
         }
 
@@ -23,7 +24,8 @@ describe('Wizard', () => {
 
     }
 
-    class ExampleStep2 implements WizardStep{
+    class ExampleStep2 implements WizardStep {
+
         focus(): void {
         }
 
@@ -63,6 +65,7 @@ describe('Wizard', () => {
         expect(example.getStepFromIndex(1).index).equal(1);
         expect(example.getStepFromIndex(1).step.render(example)).equal("Yay!2");
     });
+
     it('should return prevStep', () => {
         example.prevStep();
         expect(example.current_index).equal(0);
