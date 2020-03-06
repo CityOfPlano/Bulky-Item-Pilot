@@ -46,7 +46,7 @@ pipeline {
       parallel {
         stage('Lambda') {
           steps {
-            sh(label: 'Utility Routing', script: 'aws --region us-east-2 lambda update-function-code --function-name UtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip')
+            sh(label: 'Utility Routing', script: 'aws --region us-east-1 lambda update-function-code --function-name BulkyItemsUtilityRoutingService --zip-file fileb://./artifact/BulkyItemsPickupUtilityRoutingService.zip')
           }
         }
 
