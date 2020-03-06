@@ -4,6 +4,7 @@ import {StepLanding} from "./wizard/StepLanding";
 import {StepCustomerAuth} from "./wizard/StepCustomerAuth";
 import {DomWizardRenderer} from "../lib/controller/DomWizardRenderer";
 import {ClientWizardState} from "../lib/WizardState";
+import {StepCustomerInformation} from "./wizard/StepCustomerInformation";
 
 let wizard_renderer = new DomWizardRenderer();
 let wizard = new Wizard(document.body, wizard_renderer);
@@ -14,6 +15,7 @@ let step_loading = new StepLoading();
 wizard.addStep(step_loading);
 wizard.addStep(new StepLanding());
 wizard.addStep(new StepCustomerAuth());
+wizard.addStep(new StepCustomerInformation());
 
 wizard.render();
 
