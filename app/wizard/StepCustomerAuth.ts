@@ -39,7 +39,9 @@ export class StepCustomerAuth implements WizardStep {
                 wizard.getRenderer().showModal(ModalLoadingView);
                 let provider = new LambdaProvider();
 
-                provider.postPayload(wizard.getState(), function (data: CustomerUtiligyAuth) {
+                let msg  = Object.assign({route:"UtilityAuth"}, wizard.getState());
+
+                provider.postPayload(msg, function (data: CustomerUtiligyAuth) {
                     if (!data.BillingUtilityIsAuthenticated) {
                         AddValidationClass(auth_input_account, "warning");
                         AddValidationClass(auth_input_address, "warning");
