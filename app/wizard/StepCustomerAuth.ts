@@ -23,6 +23,11 @@ export class StepCustomerAuth implements WizardStep {
             auth_input_account.value = (wizard.getState().BillingAccountNumber || "").toString();
             auth_input_address.value = (wizard.getState().BillingAccountAddress || "").toString();
 
+            if (this.is_satisfied(wizard)){
+                auth_input_address.disabled = true;
+                auth_input_account.disabled = true;
+            }
+
             auth_input_account.onkeyup = function () {
                 ClearValidationClass(auth_input_account);
                 wizard.getState().BillingAccountNumber = parseInt(auth_input_account.value);
@@ -36,6 +41,9 @@ export class StepCustomerAuth implements WizardStep {
             };
 
             auth_button_next.onclick = function () {
+                if (self.is_satisfied(wizard)){
+                    return wizard.nextStep();
+                }
                 wizard.getRenderer().showModal(ModalLoadingView);
                 let provider = new LambdaProvider();
 
