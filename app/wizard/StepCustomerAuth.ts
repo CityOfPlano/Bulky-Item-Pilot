@@ -42,7 +42,7 @@ export class StepCustomerAuth implements WizardStep {
 
                 let msg  = Object.assign({route:"UtilityAuth"}, wizard.getState());
 
-                provider.postPayload(msg, function (data: CustomerUtiligyAuth) {
+                provider.postPayload(msg, function (data: ClientWizardState) {
                     if (!data.BillingUtilityIsAuthenticated) {
                         AddValidationClass(auth_input_account, "warning");
                         AddValidationClass(auth_input_address, "warning");
@@ -50,7 +50,7 @@ export class StepCustomerAuth implements WizardStep {
                     } else {
                         wizard.nextStep();
                     }
-                    Object.assign(wizard.getState(), msg);
+                    Object.assign(wizard.getState(), data);
                 });
 
             };
