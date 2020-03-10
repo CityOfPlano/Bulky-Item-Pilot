@@ -23,6 +23,10 @@ export class Wizard {
         }
     }
 
+    setStep(idx: number){
+        this.current_index = idx;
+    }
+
     addStep(wizard_step: WizardStep) {
         this.steps.push(wizard_step);
     }
@@ -34,7 +38,6 @@ export class Wizard {
     }
 
     prevStep() {
-        console.log("goTo Previous");
         this.current_index--;
         this.render();
     }

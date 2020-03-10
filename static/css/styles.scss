@@ -25,11 +25,15 @@
   display: inline-block;
 }
 
-#auth_input_address {
+#auth_input_address,#describe_detail {
   text-transform: uppercase;
 }
 
 .pad-small-bottom {
   display: block;
   padding-bottom: $leading / 2;
+}
+
+.margin-small-bottom {
+  margin-bottom: $leading / 2;
 }

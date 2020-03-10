@@ -8,4 +8,5 @@ export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth 
     public BillingAccountNameOnAddress: string = "";
     public BillingUtilityIsAuthenticated: boolean = false;
     public InformationUsedFreePickups: number;
+    public CustomerDescribeDetail: string = "";
 }

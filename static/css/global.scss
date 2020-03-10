@@ -94,9 +94,12 @@ button:hover:not([disabled]) {
 }
 
 .warning {
-  border: 1px solid $plano-red;
   color: $plano-red;
   background-color: #fffcfc;
+}
+
+button.warning, input.warning, textarea.warning {
+  border: 1px solid $plano-red;
 }
 
 button.warning:hover:not([disabled]) {
