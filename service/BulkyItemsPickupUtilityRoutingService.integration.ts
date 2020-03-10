@@ -37,7 +37,7 @@ describe('Utility Routing Service', () => {
         request(options, function (error, response, json) {
             expect(json).not.equal(null);
             expect(typeof json.timestamp).equal("number");
-            expect(json.BillingUtilityIsAuthenticated).equal(undefined);
+            expect(json.BillingUtilityIsAuthenticated).equal(false);
             done();
         });
     });
