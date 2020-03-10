@@ -1,20 +1,20 @@
 <div class="wizard-content">
     <h2>Your Account Information</h2>
-    <p>
+
     <table>
         <tr>
-            <td><small>Account #</small></td>
-            <td><small>Address</small></td>
-            <td><small>Name on Account</small></td>
+            <td><label>Account</label></td>
+            <td><label>Street Address</label></td>
+            <td><label>Name on Account</label></td>
         </tr>
         <tr>
-            <td>{BillingAccountNumber}</td>
+            <td><strong>#</strong>{BillingAccountNumber}</td>
             <td>{BillingAccountAddress}</td>
             <td>{BillingAccountNameOnAddress}</td>
         </tr>
     </table>
-    </p>
-    <p><small>{InformationUsedFreePickups} of 12 Free Pickups Used</small><br/>
+
+    <p><div class="tip-text"><em>{InformationUsedFreePickups} of 12 Free Pickups Used</em></div><br/>
         Schedule a Pickup for:</p>
     <p>
         <label for="pickup-bulky"><input id="pickup-bulky" name="customer_bulky_pickup_type" type="radio" checked> Bulky

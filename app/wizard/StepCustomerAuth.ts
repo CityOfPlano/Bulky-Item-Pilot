@@ -42,13 +42,19 @@ export class StepCustomerAuth implements WizardStep {
 
                 let msg  = Object.assign({route:"UtilityAuth"}, wizard.getState());
 
-                provider.postPayload(msg, function (data: ClientWizardState) {
-                    Object.assign(wizard.getState(), data);
+                provider.postPayload(msg, function (data: CustomerUtiligyAuth) {
+
+                    console.log('DATA', data);
                     if (!data.BillingUtilityIsAuthenticated) {
                         AddValidationClass(auth_input_account, "warning");
                         AddValidationClass(auth_input_address, "warning");
                         wizard.getRenderer().clearModal();
                     } else {
+                        wizard.getState().BillingUtilityIsAuthenticated = data.BillingUtilityIsAuthenticated;
+                        wizard.getState().BillingAccountNumber = data.BillingAccountNumber;
+                        wizard.getState().BillingAccountAddress = data.BillingAccountAddress;
+                        wizard.getState().BillingAccountNameOnAddress = data.BillingAccountNameOnAddress;
+                        wizard.getState().InformationUsedFreePickups = data.InformationUsedFreePickups;
                         wizard.nextStep();
                     }
                 });
