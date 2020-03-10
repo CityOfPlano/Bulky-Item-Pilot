@@ -11,6 +11,8 @@ exports.handler = async (event) => {
         if (body.route) {
             switch (body.route) {
                 case "UtilityAuth":
+                    msg.BillingAccountNumber = body.BillingAccountNumber;
+                    msg.BillingAccountAddress = body.BillingAccountAddress;
                     if (body.BillingAccountNumber === 123 && body.BillingAccountAddress.toLowerCase() === "123 main street") {
                         msg.Token = crypto.randomBytes(64).toString('hex');
                         msg.BillingAccountNumber = 123;

@@ -43,12 +43,12 @@ export class StepCustomerAuth implements WizardStep {
                 let msg  = Object.assign({route:"UtilityAuth"}, wizard.getState());
 
                 provider.postPayload(msg, function (data: ClientWizardState) {
+                    Object.assign(wizard.getState(), data);
                     if (!data.BillingUtilityIsAuthenticated) {
                         AddValidationClass(auth_input_account, "warning");
                         AddValidationClass(auth_input_address, "warning");
                         wizard.getRenderer().clearModal();
                     } else {
-                        Object.assign(wizard.getState(), data);
                         wizard.nextStep();
                     }
                 });
@@ -63,8 +63,6 @@ export class StepCustomerAuth implements WizardStep {
     update(w: ClientWizardState) {
         let auth_button_next = <HTMLButtonElement>document.getElementById("auth_button_next");
         let auth_button_tip = document.getElementById("auth_button_tip");
-
-        console.log("state of wiz", w);
 
         if (ValidateNumberField(w.BillingAccountNumber).success && w.BillingAccountAddress && w.BillingAccountAddress.length >= 3) {
             auth_button_next.disabled = false;
