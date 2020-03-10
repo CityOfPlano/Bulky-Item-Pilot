@@ -64,6 +64,8 @@ export class StepCustomerAuth implements WizardStep {
         let auth_button_next = <HTMLButtonElement>document.getElementById("auth_button_next");
         let auth_button_tip = document.getElementById("auth_button_tip");
 
+        console.log("state of wiz", w);
+
         if (ValidateNumberField(w.BillingAccountNumber).success && w.BillingAccountAddress && w.BillingAccountAddress.length >= 3) {
             auth_button_next.disabled = false;
             auth_button_tip.style.display = "none";
