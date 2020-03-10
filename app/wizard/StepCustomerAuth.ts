@@ -48,9 +48,9 @@ export class StepCustomerAuth implements WizardStep {
                         AddValidationClass(auth_input_address, "warning");
                         wizard.getRenderer().clearModal();
                     } else {
+                        Object.assign(wizard.getState(), data);
                         wizard.nextStep();
                     }
-                    Object.assign(wizard.getState(), data);
                 });
 
             };
