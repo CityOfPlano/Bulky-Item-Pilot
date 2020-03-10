@@ -5,11 +5,22 @@ import ModalLoadingView from "../view/ModalLoadingView.html";
 import {LambdaProvider} from "../../lib/LambdaProvider";
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass} from "../../lib/util/ValidateField";
+import {PickupType, PickupTypeOptions} from "../../lib/enum/PickupType";
 
 export class StepCustomerInformation implements WizardStep {
 
     render(wizard: Wizard): string {
-        return new StringTemplate(StepCustomerInformationView).apply(wizard.getState());
+        let options = [];
+
+        for (let prop in PickupTypeOptions){
+            let option:PickupType = PickupTypeOptions[prop];
+            options.push( `<label for="pickup-${option.taskName}"><input id="pickup-${option.taskName}" name="customer_pickup_type" value="${option.type}" type="radio" ${option.type === wizard.getState().CustomerPickupType?"checked":""}> ${option.name}</label>` );
+        }
+
+        let payload = {};
+        Object.assign(payload, wizard.getState());
+        Object.assign(payload, {optionsGroup:options.join("<br>")});
+        return new StringTemplate(StepCustomerInformationView).apply(payload);
     }
 
     focus(wizard: Wizard): void {
@@ -18,6 +29,16 @@ export class StepCustomerInformation implements WizardStep {
         info_button_next.onclick = function () {
             wizard.nextStep();
         };
+
+        for (let prop in PickupTypeOptions){
+            let option:PickupType = PickupTypeOptions[prop];
+            let opt_radio = <HTMLInputElement>document.getElementById(`pickup-${option.taskName}`);
+            opt_radio.onclick = function(e){
+                wizard.getState().CustomerPickupType = parseInt(opt_radio.value);
+            }
+
+        }
+
     }
 
     is_satisfied(wizard: Wizard): boolean {

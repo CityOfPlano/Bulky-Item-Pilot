@@ -1,3 +1,5 @@
+import {PickupOptions} from "./PickupOptions";
+
 export interface PayloadWithToken {
     Token: string;
 }
