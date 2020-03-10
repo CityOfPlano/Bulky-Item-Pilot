@@ -1,5 +1,29 @@
 <div class="wizard-content">
     <h2>Your Account Information</h2>
-    <p><small></small></p>
+    <p>
+    <table>
+        <tr>
+            <td><small>Account #</small></td>
+            <td><small>Address</small></td>
+            <td><small>Name on Account</small></td>
+        </tr>
+        <tr>
+            <td>{BillingAccountNumber}</td>
+            <td>{BillingAccountAddress}</td>
+            <td>{BillingAccountNameOnAddress}</td>
+        </tr>
+    </table>
+    </p>
+    <p><small>{InformationUsedFreePickups} of 12 Free Pickups Used</small><br/>
+        Schedule a Pickup for:</p>
+    <p>
+        <label for="pickup-bulky"><input id="pickup-bulky" name="customer_bulky_pickup_type" type="radio" checked> Bulky
+            Waste</label><br/>
+        <label for="pickup-trimming"><input id="pickup-trimming" name="customer_bulky_pickup_type" type="radio"> Brush &
+            Trimmings</label><br/>
+        <label for="pickup-both"><input id="pickup-both" name="customer_bulky_pickup_type" type="radio"> Both <small>(Bulky
+            & Brush)</small></label>
+        <small>Note: "Both" will count as two Pickups.</small>
+    </p>
     <button id="customer_button_information">Next <i class="fas fa-fw fa-angle-right"></i></button>
 </div>

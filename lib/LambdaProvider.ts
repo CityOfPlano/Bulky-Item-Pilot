@@ -10,10 +10,7 @@ export class LambdaProvider {
         xhr.open("POST", this.config.url, true);
         xhr.send(JSON.stringify(payload));
         xhr.onload = function() {
-            console.log("LambdaProvider Response");
-            console.log(this.responseText);
             var data = JSON.parse(this.responseText);
-            console.log(data);
             callback(data);
         }
     }

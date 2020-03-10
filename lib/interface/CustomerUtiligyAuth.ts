@@ -8,4 +8,6 @@ export interface CustomerUtiligyAuth extends PayloadWithToken {
     BillingAccountAddress:string;
     BillingUtilityIsAuthenticated: boolean;
 
+    InformationUsedFreePickups:number;
+
 }

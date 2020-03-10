@@ -4,9 +4,7 @@ import {MockWizardRenderer} from "../mock/MockWizardRenderer";
 
 describe('Wizard', () => {
 
-
     let w_renderer = new MockWizardRenderer();
-
     let example = new Wizard(null, w_renderer);
 
     class ExampleStep implements WizardStep {

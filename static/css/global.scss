@@ -65,7 +65,7 @@ label{
   display: block;
 }
 
-input, textarea {
+input[type=text], textarea {
   margin-bottom: $line-height;
   width: 100%;
   max-width: 620px;

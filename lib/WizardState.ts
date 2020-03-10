@@ -5,7 +5,9 @@ export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth 
     public WorkOrderNum: number;
     public BillingAccountNumber: number;
     public BillingAccountAddress: string;
+    public BillingAccountNameOnAddress: string;
     public BillingUtilityIsAuthenticated: boolean;
+    public InformationUsedFreePickups: number;
 
     reset() {
         this.Token = null;

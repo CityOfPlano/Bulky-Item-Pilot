@@ -1,5 +1,7 @@
 import {ClientWizardState} from "../lib/WizardState";
 
+const crypto = require("crypto");
+
 exports.handler = async (event) => {
     let msg = new ClientWizardState();
 
@@ -10,7 +12,12 @@ exports.handler = async (event) => {
             switch (body.route) {
                 case "UtilityAuth":
                     if (body.BillingAccountNumber === 123 && body.BillingAccountAddress.toLowerCase() === "123 main street") {
+                        msg.Token = crypto.randomBytes(64).toString('hex');
+                        msg.BillingAccountNumber = 123;
+                        msg.BillingAccountAddress = "123 MAIN STREET";
+                        msg.BillingAccountNameOnAddress = "Robin Smith";
                         msg.BillingUtilityIsAuthenticated = true;
+                        msg.InformationUsedFreePickups = 0;
                     }
                     break;
                 default:
