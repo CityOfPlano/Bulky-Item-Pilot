@@ -37,3 +37,68 @@
 .margin-small-bottom {
   margin-bottom: $leading / 2;
 }
+
+.days {
+  margin-top: $leading/2;
+}
+
+.days.calendar {
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+#calendar_container .days span {
+  width: calc(100% / 7);
+  display: inline-block;
+  text-align: center;
+  padding: $leading/4 0;
+  font-size: 0.8em;
+}
+
+#calendar_container button {
+  min-width: 80px;
+}
+
+.days .last-month,.days .next-month {
+  color: #aaa;
+}
+
+.days .disabled {
+  background:#fafafa;
+  color:#aaa;
+}
+
+.days .available {
+  background: bisque;
+}
+
+.days .available:hover {
+  cursor: pointer;
+  background-color: #fff0de;
+
+}
+
+.days .selected {
+  background: $plano-blue;
+  color:#fff;
+}
+
+.days .selected:hover {
+  cursor: pointer;
+  background: #385ba8;
+  color:#fff;
+}
+
+.days .today {
+  color: $plano-blue;
+  font-weight: bolder;
+}
+
+.days > .legend {
+  background-color: #333333;
+  color: #fff;
+}
+
+.days label {
+  display: inline-block;
+}

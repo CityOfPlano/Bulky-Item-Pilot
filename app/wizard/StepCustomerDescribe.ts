@@ -14,10 +14,16 @@ export class StepCustomerDescribe implements WizardStep {
         let self = this;
 
         let describe_detail = <HTMLTextAreaElement>document.getElementById("describe_detail");
+        let describe_button_next = <HTMLButtonElement>document.getElementById("describe_button_next");
+
         describe_detail.onkeyup = function () {
             ClearValidationClass(describe_detail);
             wizard.getState().CustomerDescribeDetail = describe_detail.value.toUpperCase();
             self.update(wizard.getState());
+        };
+
+        describe_button_next.onclick = function () {
+          wizard.nextStep();
         };
 
         self.update(wizard.getState());

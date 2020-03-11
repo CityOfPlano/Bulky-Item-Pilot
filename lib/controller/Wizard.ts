@@ -15,6 +15,7 @@ export class Wizard {
         this.render_target = target;
         this.wizard_renderer = wizardRenderer;
         this.wizard_state = null;
+        console.log("%c🙂","font-size:16pt");
     }
 
     render() {

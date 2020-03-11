@@ -6,18 +6,23 @@ import {DomWizardRenderer} from "../lib/controller/DomWizardRenderer";
 import {ClientWizardState} from "../lib/WizardState";
 import {StepCustomerInformation} from "./wizard/StepCustomerInformation";
 import {StepCustomerDescribe} from "./wizard/StepCustomerDescribe";
+import {StepCustomerDate} from "./wizard/StepCustomerDate";
 
-let wizard_renderer = new DomWizardRenderer();
-let wizard = new Wizard(document.body, wizard_renderer);
+let renderer = new DomWizardRenderer();
+let wizard = new Wizard(document.body, renderer);
 wizard.useState(new ClientWizardState());
+//wizard.getState().BillingAccountNumber = 123;
+//wizard.getState().BillingAccountAddress = "123 Main Street";
 
 let step_loading = new StepLoading();
 
 wizard.addStep(step_loading);
+//wizard.addStep(new StepCustomerDate());
 wizard.addStep(new StepLanding());
 wizard.addStep(new StepCustomerAuth());
 wizard.addStep(new StepCustomerInformation());
 wizard.addStep(new StepCustomerDescribe());
+wizard.addStep(new StepCustomerDate());
 
 wizard.render();
 

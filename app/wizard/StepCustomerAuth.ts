@@ -44,7 +44,6 @@ export class StepCustomerAuth implements WizardStep {
 
                 provider.postPayload(msg, function (data: CustomerUtiligyAuth) {
 
-                    console.log('DATA', data);
                     if (!data.BillingUtilityIsAuthenticated) {
                         AddValidationClass(auth_input_account, "warning");
                         AddValidationClass(auth_input_address, "warning");

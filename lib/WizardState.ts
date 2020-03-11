@@ -11,4 +11,5 @@ export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth,
     public InformationUsedFreePickups: number = 0;
     public CustomerDescribeDetail: string = "";
     public CustomerPickupType: number = 0;
+    public CustomerPickupDate: string;
 }
