@@ -33,7 +33,7 @@ describe('Calendar', () => {
     });
 
     it('should return correct number of days', () => {
-        let calc = calendar.getDaysInMonth(0 /* January = 1 */,2020);
+        let calc = calendar.getDaysInMonth(0 /* January = 0 */,2020);
         expect(calc).equal(31);
         calc = calendar.getDaysInMonth(1 /* February = 1 */,2019);
         expect(calc).equal(28);

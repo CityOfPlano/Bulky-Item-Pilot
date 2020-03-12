@@ -7,12 +7,14 @@ import {ClientWizardState} from "../lib/WizardState";
 import {StepCustomerInformation} from "./wizard/StepCustomerInformation";
 import {StepCustomerDescribe} from "./wizard/StepCustomerDescribe";
 import {StepCustomerDate} from "./wizard/StepCustomerDate";
+import {StepCustomerContact} from "./wizard/StepCustomerContact";
+import {StepDisclaimer} from "./wizard/StepDisclaimer";
 
 let renderer = new DomWizardRenderer();
 let wizard = new Wizard(document.body, renderer);
 wizard.useState(new ClientWizardState());
-//wizard.getState().BillingAccountNumber = 123;
-//wizard.getState().BillingAccountAddress = "123 Main Street";
+wizard.getState().BillingAccountNumber = 123;
+wizard.getState().BillingAccountAddress = "123 Main Street";
 
 let step_loading = new StepLoading();
 
@@ -22,6 +24,8 @@ wizard.addStep(new StepCustomerAuth());
 wizard.addStep(new StepCustomerInformation());
 wizard.addStep(new StepCustomerDescribe());
 wizard.addStep(new StepCustomerDate());
+wizard.addStep(new StepCustomerContact());
+wizard.addStep(new StepDisclaimer());
 
 wizard.render();
 

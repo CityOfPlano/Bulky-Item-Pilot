@@ -1,7 +1,8 @@
 import {CustomerUtiligyAuth, PayloadWithToken} from "./interface/CustomerUtiligyAuth";
 import {PickupOptions} from "./interface/PickupOptions";
+import {CustomerContact} from "./interface/CustomerContact";
 
-export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth, PickupOptions {
+export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth, PickupOptions, CustomerContact {
     public Token: string = null;
     public WorkOrderNum: number = null;
     public BillingAccountNumber: number = null;
@@ -12,4 +13,7 @@ export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth,
     public CustomerDescribeDetail: string = "";
     public CustomerPickupType: number = 0;
     public CustomerPickupDate: string;
+    public CustomerContactName: string= "";
+    public CustomerContactPhone: string = "";
+    public CustomerContactAgreeDisclaimer: boolean = false;
 }
