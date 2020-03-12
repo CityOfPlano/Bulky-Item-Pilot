@@ -32,7 +32,7 @@ export class Calendar {
             this.selected_day = parseInt(m[1]);
             this.display_year = this.selected_year;
             this.display_month = this.selected_month;
-            this.selected_date = this.getSelectedAsString();
+           this.selected_date = this.getSelectedAsString();
         }
         this.on_change = function () {
         };

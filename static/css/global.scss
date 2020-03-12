@@ -58,14 +58,14 @@ footer {
   float: right;
 }
 
-label{
+label {
   font-size: 0.8em;
   color: #333;
   font-style: oblique;
   display: block;
 }
 
-input[type=text], textarea {
+input[type=text], input[type=number], input[type=tel], input[type=email], textarea {
   margin-bottom: $line-height;
   width: 100%;
   max-width: 620px;
@@ -89,7 +89,7 @@ button {
 
 button:hover:not([disabled]) {
   cursor: pointer;
-  color:#fff;
+  color: #fff;
   background-color: $plano-blue;
 }
 
@@ -122,10 +122,12 @@ button[disabled] {
   display: flex;
   align-items: center;
 }
+
 .flex-row {
   display: flex;
   flex-flow: row wrap;
 }
+
 .flex-col {
   display: flex;
   flex-flow: column;

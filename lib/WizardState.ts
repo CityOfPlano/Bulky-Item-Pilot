@@ -13,7 +13,11 @@ export class ClientWizardState implements PayloadWithToken, CustomerUtiligyAuth,
     public CustomerDescribeDetail: string = "";
     public CustomerPickupType: number = 0;
     public CustomerPickupDate: string;
-    public CustomerContactName: string= "";
+    public CustomerContactName: string = "";
     public CustomerContactPhone: string = "";
     public CustomerContactAgreeDisclaimer: boolean = false;
+    public CustomerNotifyEmail: string = "";
+    public CustomerNotifyPhone: string = "";
+    public CustomerNotifyByEmail: boolean = false;
+    public CustomerNotifyByPhone: boolean = false;
 }

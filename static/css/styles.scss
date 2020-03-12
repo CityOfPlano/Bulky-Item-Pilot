@@ -5,7 +5,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: rgba(255,255,255,0.96);
+  background-color: rgba(255, 255, 255, 0.96);
   display: none;
 }
 
@@ -25,7 +25,7 @@
   display: inline-block;
 }
 
-#auth_input_address,#describe_detail {
+#auth_input_address, #describe_detail {
   text-transform: uppercase;
 }
 
@@ -59,13 +59,13 @@
   min-width: 80px;
 }
 
-.days .last-month,.days .next-month {
+.days .last-month, .days .next-month {
   color: #aaa;
 }
 
 .days .disabled {
-  background:#fafafa;
-  color:#aaa;
+  background: #fafafa;
+  color: #aaa;
 }
 
 .days .available {
@@ -75,23 +75,22 @@
 .days .available:hover {
   cursor: pointer;
   background-color: #fff0de;
-
-}
-
-.days .selected {
-  background: $plano-blue;
-  color:#fff;
-}
-
-.days .selected:hover {
-  cursor: pointer;
-  background: #385ba8;
-  color:#fff;
 }
 
 .days .today {
   color: $plano-blue;
   font-weight: bolder;
+}
+
+.days .selected {
+  background: $plano-blue;
+  color: #fff;
+}
+
+.days .selected:hover {
+  cursor: pointer;
+  background: #385ba8;
+  color: #fff;
 }
 
 .days > .legend {
@@ -101,4 +100,13 @@
 
 .days label {
   display: inline-block;
+}
+
+label, .tip-text {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }

@@ -9,6 +9,7 @@ import {StepCustomerDescribe} from "./wizard/StepCustomerDescribe";
 import {StepCustomerDate} from "./wizard/StepCustomerDate";
 import {StepCustomerContact} from "./wizard/StepCustomerContact";
 import {StepDisclaimer} from "./wizard/StepDisclaimer";
+import {StepCustomerNotify} from "./wizard/StepCustomerNotify";
 
 let renderer = new DomWizardRenderer();
 let wizard = new Wizard(document.body, renderer);
@@ -26,6 +27,8 @@ wizard.addStep(new StepCustomerDescribe());
 wizard.addStep(new StepCustomerDate());
 wizard.addStep(new StepCustomerContact());
 wizard.addStep(new StepDisclaimer());
+wizard.addStep(new StepCustomerNotify());
+//wizard.addStep(new StepCustomerSummary());
 
 wizard.render();
 
