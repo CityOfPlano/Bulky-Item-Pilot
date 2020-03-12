@@ -4,6 +4,7 @@ import WizardResetView from "../../app/view/WizardResetView.html";
 import {Wizard} from "./Wizard";
 import {WizardRenderer} from "../interface/WizardRenderer";
 import {ClientWizardState} from "../WizardState";
+import {StringTemplate} from "../StringTemplate";
 
 export class DomWizardRenderer implements WizardRenderer {
 
@@ -13,13 +14,13 @@ export class DomWizardRenderer implements WizardRenderer {
     render(wizard: Wizard) {
         let self = this;
         this.clearModal();
-        wizard.render_target.innerHTML = WizardControlsView + wizard.getStepFromIndex(wizard.current_index).step.render(wizard) + WizardFooterView;
+        wizard.render_target.innerHTML = new StringTemplate(WizardControlsView).apply({percent:((((Math.min(wizard.getStep().index+1, wizard.current_index))/(wizard.steps.length-1))*100)|0),progressBar:this.generateProgressBar(wizard)}) + wizard.getStepFromIndex(wizard.current_index).step.render(wizard) + WizardFooterView;
         wizard.getStepFromIndex(wizard.current_index).step.focus(wizard);
 
         let wizard_button_back: HTMLButtonElement = <HTMLButtonElement>document.getElementById("wizard_button_back");
         let wizard_button_reset: HTMLButtonElement = <HTMLButtonElement>document.getElementById("wizard_button_reset");
 
-        if (wizard.current_index <= 1) {
+        if (wizard.current_index <= 0) {
             wizard_button_back.disabled = true;
             wizard_button_reset.disabled = true;
         } else {
@@ -37,12 +38,20 @@ export class DomWizardRenderer implements WizardRenderer {
 
                 modal_button_reset.onclick = function(){
                     wizard.useState(new ClientWizardState());
-                    wizard.setStep(1);
+                    wizard.setStep(0);
                     wizard.render();
                 };
 
             };
         }
+    }
+
+    generateProgressBar(wizard: Wizard){
+        let str = [];
+        for (let i= 0; i< wizard.steps.length; i++){
+            str.push(`<div class="step ${wizard.getStep().index>=i?"completed":""} ${wizard.current_index==i?"selected":""}" id="${i}"></div>`);
+        }
+        return `<div class="steps">${str.join("")}</div>`;
     }
 
     showModal(html:string){

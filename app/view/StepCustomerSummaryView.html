@@ -1,0 +1,50 @@
+<div class="wizard-content">
+    <h2>Pickup Summary</h2>
+
+    <table>
+        <tr>
+            <td><label>Account</label></td>
+            <td><label>Street Address</label></td>
+            <td><label>Name on Account</label></td>
+        </tr>
+        <tr>
+            <td><strong>#</strong>{BillingAccountNumber}</td>
+            <td>{BillingAccountAddress}</td>
+            <td>{BillingAccountNameOnAddress}</td>
+        </tr>
+    </table>
+<br/>
+    <table>
+        <tr>
+            <td><label>Pickup Type</label></td>
+            <td><label>Pickup Date</label></td>
+        </tr>
+        <tr>
+            <td>{pickupTypeName}</td>
+            <td>{CustomerPickupDate}</td>
+        </tr>
+    </table>
+
+    <br/>
+    <table>
+        <tr>
+            <td><label>Notify Email</label></td>
+            <td><label>Notify Phone</label></td>
+        </tr>
+        <tr>
+            <td>{CustomerNotifyEmail}</td>
+            <td>{CustomerNotifyPhone}</td>
+        </tr>
+    </table>
+
+    <p>
+        <label>Appointment Scheduled By:</label>
+        {CustomerContactName}
+    </p>
+
+    <p>
+        <small>//TODO I have read the terms and conditions and I authorize the City of Plano to come onto my property to pickup Bulky Waste.</small>
+    </p>
+
+    <button id="summary_button_next">Create Appointment <i class="fas fa-fw fa-angle-right"></i></button>
+</div>

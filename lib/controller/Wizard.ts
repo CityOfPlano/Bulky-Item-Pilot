@@ -47,14 +47,15 @@ export class Wizard {
         let self = this;
         let _step = null;
         let _index = 0;
-        this.steps.forEach(function (step: WizardStep) {
+        this.steps.forEach(function (step: WizardStep, idx) {
             if (!step.is_satisfied(self) && !_step) {
                 _step = step;
+                _index = idx;
                 return;
             }
-            _index++;
         });
-        this.current_index = _index;
+        //this.current_index = _index;
+        console.log("getStep", _index);
         return (!!_step ? {
             step: _step,
             index: _index

@@ -61,7 +61,7 @@ export class StepCustomerContact implements WizardStep {
     }
 
     is_satisfied(wizard: Wizard): boolean {
-        return false;
+        return wizard.getState().CustomerContactName.length >= 2 && wizard.getState().CustomerContactPhone.length >= 2;
     }
 
 }

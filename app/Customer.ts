@@ -10,6 +10,7 @@ import {StepCustomerDate} from "./wizard/StepCustomerDate";
 import {StepCustomerContact} from "./wizard/StepCustomerContact";
 import {StepDisclaimer} from "./wizard/StepDisclaimer";
 import {StepCustomerNotify} from "./wizard/StepCustomerNotify";
+import {StepCustomerSummary} from "./wizard/StepCustomerSummary";
 
 let renderer = new DomWizardRenderer();
 let wizard = new Wizard(document.body, renderer);
@@ -19,7 +20,7 @@ wizard.getState().BillingAccountAddress = "123 Main Street";
 
 let step_loading = new StepLoading();
 
-wizard.addStep(step_loading);
+//wizard.addStep(step_loading);
 wizard.addStep(new StepLanding());
 wizard.addStep(new StepCustomerAuth());
 wizard.addStep(new StepCustomerInformation());
@@ -28,11 +29,11 @@ wizard.addStep(new StepCustomerDate());
 wizard.addStep(new StepCustomerContact());
 wizard.addStep(new StepDisclaimer());
 wizard.addStep(new StepCustomerNotify());
-//wizard.addStep(new StepCustomerSummary());
+wizard.addStep(new StepCustomerSummary());
 
 wizard.render();
 
 window.setTimeout(function(){
     step_loading.has_loaded = true;
-    wizard.nextStep();
+    //wizard.nextStep();
 }, 1);

@@ -5,8 +5,6 @@ import {ValidateNumberField} from "../../lib/util/ValidateField";
 
 export class StepDisclaimer implements WizardStep {
 
-    has_landed = false;
-
     render(wizard:Wizard): string {
         return StepDisclaimerView;
     }
@@ -43,7 +41,7 @@ export class StepDisclaimer implements WizardStep {
     }
 
     is_satisfied(wizard: Wizard): boolean {
-        return this.has_landed;
+        return wizard.getState().CustomerContactAgreeDisclaimer;
     }
 
 }

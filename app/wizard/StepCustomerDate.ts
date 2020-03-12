@@ -48,7 +48,7 @@ export class StepCustomerDate implements WizardStep {
     }
 
     is_satisfied(wizard: Wizard): boolean {
-        return false;
+        return wizard.getState().CustomerPickupDate && wizard.getState().CustomerPickupDate.length >= 1;
     }
 
 }

@@ -9,6 +9,8 @@ import {PickupType, PickupTypeOptions} from "../../lib/enum/PickupType";
 
 export class StepCustomerInformation implements WizardStep {
 
+    has_viewed = false;
+
     render(wizard: Wizard): string {
         let options = [];
 
@@ -24,10 +26,12 @@ export class StepCustomerInformation implements WizardStep {
     }
 
     focus(wizard: Wizard): void {
+        let self = this;
         let info_button_next = <HTMLButtonElement>document.getElementById("customer_button_information");
 
         info_button_next.onclick = function () {
             wizard.nextStep();
+            self.has_viewed = true;
         };
 
         for (let prop in PickupTypeOptions){
@@ -42,7 +46,7 @@ export class StepCustomerInformation implements WizardStep {
     }
 
     is_satisfied(wizard: Wizard): boolean {
-        return false;
+        return this.has_viewed;
     }
 
 }

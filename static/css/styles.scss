@@ -110,3 +110,42 @@ label, .tip-text {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
+
+.steps {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.step {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #ACACA6;
+  border-radius: 50%;
+  transition: background 1s;
+}
+.step.completed {
+  border: 2px solid #4B81BD;
+  background: #4B81BD;
+}
+.step.selected {
+  border: 2px solid #4B81BD;
+  background: #fff;
+}
+.progress {
+  position: absolute;
+  width: calc(100% - 18pt);
+  top: calc(50% - 1px);
+  height: 2px;
+  background: #ACACA6;
+  z-index: -1;
+}
+.percent {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: #4B81BD;
+  z-index: 1;
+  transition: width 1s;
+}

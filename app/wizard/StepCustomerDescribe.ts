@@ -23,14 +23,14 @@ export class StepCustomerDescribe implements WizardStep {
         };
 
         describe_button_next.onclick = function () {
-          wizard.nextStep();
+            wizard.nextStep();
         };
 
         self.update(wizard.getState());
 
     }
 
-    update(state:ClientWizardState){
+    update(state: ClientWizardState) {
         let describe_button_next = <HTMLButtonElement>document.getElementById("describe_button_next");
         let describe_button_tip = document.getElementById("describe_button_tip");
 
@@ -44,7 +44,7 @@ export class StepCustomerDescribe implements WizardStep {
     }
 
     is_satisfied(wizard: Wizard): boolean {
-        return false;
+        return (wizard.getState().CustomerDescribeDetail.length >= 1);
     }
 
 }
