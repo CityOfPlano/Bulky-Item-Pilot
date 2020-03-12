@@ -21,7 +21,7 @@ export class StepCustomerDate implements WizardStep {
         calendar_container.appendChild(this.calendar.getElement());
 
         this.calendar.onChange(function(selected_date:string){
-                wizard.getState().CustomerPickupDate = selected_date;
+            wizard.getState().CustomerPickupDate = selected_date;
             calendar_container.innerHTML='';
             calendar_container.appendChild(self.calendar.getElement());
             self.update(wizard.getState());

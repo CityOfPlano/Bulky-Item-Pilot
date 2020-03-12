@@ -30,13 +30,16 @@ export class Calendar {
             this.selected_year = parseInt(m[3]);
             this.selected_month = parseInt(m[2]) - 1;
             this.selected_day = parseInt(m[1]);
+            this.display_year = this.selected_year;
+            this.display_month = this.selected_month;
+            this.selected_date = this.getSelectedAsString();
         }
         this.on_change = function () {
         };
     }
 
     getSelectedAsString() {
-        return this.selected_date || "";
+        return `${this.selected_day}/${this.selected_month + 1}/${this.selected_year}`;
     }
 
     getElement() {
@@ -182,15 +185,13 @@ export class Calendar {
                     self.selected_month = 0;
                     self.selected_day = 0;
                     self.on_change(self.selected_date);
-                    console.log('RESET DATE', self.selected_date);
                     return;
                 }
 
                 self.selected_year = parseInt(elem.getAttribute("data-year"));
                 self.selected_month = parseInt(elem.getAttribute("data-month"));
                 self.selected_day = parseInt(elem.getAttribute("data-day"));
-                self.selected_date = `${self.selected_day}/${self.selected_month + 1}/${self.selected_year}`;
-                console.log(self.selected_date);
+                self.selected_date = self.getSelectedAsString();
                 self.display_month = parseInt(elem.getAttribute("data-month"));
                 self.display_year = parseInt(elem.getAttribute("data-year"));
                 self.on_change(self.selected_date);

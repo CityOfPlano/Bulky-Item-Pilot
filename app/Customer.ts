@@ -17,7 +17,6 @@ wizard.useState(new ClientWizardState());
 let step_loading = new StepLoading();
 
 wizard.addStep(step_loading);
-//wizard.addStep(new StepCustomerDate());
 wizard.addStep(new StepLanding());
 wizard.addStep(new StepCustomerAuth());
 wizard.addStep(new StepCustomerInformation());
