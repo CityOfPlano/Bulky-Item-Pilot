@@ -1,12 +1,12 @@
-import {ClientWizardState} from "../lib/WizardState";
-
-const crypto = require("crypto");
-
 exports.handler = async (event) => {
-    let msg = new ClientWizardState();
+    const ClientWizardState = require("./lib/WizardState");
+    const MySQLDriver = require("./lib/MySQLDriver");
+    let mySQLDriver = new MySQLDriver.MySQLDriver();
+    let crypt = require("crypto");
 
-    if (event.body) {
-        let body = JSON.parse(event.body);
+    let msg = new ClientWizardState.ClientWizardState();
+    if (event) {
+        let body = event;
 
         if (body.route) {
             switch (body.route) {
@@ -14,13 +14,15 @@ exports.handler = async (event) => {
                     msg.BillingAccountNumber = body.BillingAccountNumber;
                     msg.BillingAccountAddress = body.BillingAccountAddress;
                     if (body.BillingAccountNumber === 123 && body.BillingAccountAddress.toLowerCase() === "123 main street") {
-                        msg.Token = crypto.randomBytes(64).toString('hex');
                         msg.BillingAccountNumber = 123;
                         msg.BillingAccountAddress = "123 MAIN STREET";
                         msg.BillingAccountNameOnAddress = "Robin Smith";
                         msg.BillingUtilityIsAuthenticated = true;
                         msg.InformationUsedFreePickups = 0;
                     }
+
+                   msg['db'] = await mySQLDriver.query();
+
                     break;
                 default:
 
@@ -33,10 +35,12 @@ exports.handler = async (event) => {
 
     const response = {
         statusCode: 200,
-        body:(JSON.stringify(msg, null, 2)),
-        headers:{
-            "Access-Control-Allow-Origin" : "http://plano-core-bulky-items-pilot.s3-website.us-east-2.amazonaws.com"
+        body: (JSON.stringify(msg, null, 2)),
+        headers: {
+            "Access-Control-Allow-Origin": "http://plano-core-bulky-items-pilot.s3-website.us-east-2.amazonaws.com"
         }
     };
+
     return response;
+
 };

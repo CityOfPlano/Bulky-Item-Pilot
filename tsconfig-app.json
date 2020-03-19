@@ -15,12 +15,15 @@
     "outDir" :"tmp",
     "moduleResolution": "node"
   },
+
   "include": ["lib","app"],
+
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
     "./node_modules/@types/node/index.d.ts",
     "./node_modules/@types/chai/index.d.ts"
   ],
+
   "exclude": [
     "node_modules",
     "**/*.spec.ts"

@@ -1,12 +1,11 @@
 import {expect} from 'chai';
-import {CustomerUtiligyAuth} from "../lib/interface/CustomerUtiligyAuth";
 
 const fs = require('fs');
 const request = require('request');
 
 describe('Utility Routing Service', () => {
 
-    const options = JSON.parse(fs.readFileSync('./config/lambda-routing.json'));
+    const options = JSON.parse(fs.readFileSync('./config/local-lambda-routing.json'));
     options.method = 'POST';
     options.json = {
             test: 123
@@ -21,7 +20,8 @@ describe('Utility Routing Service', () => {
     });
 
     it('should return json result', (done) => {
-        request(options, function (error, response, json) {
+        request(options, function (error, response, body) {
+            let json = JSON.parse(body);
             expect(json).not.equal(null);
             expect(typeof json.timestamp).equal("number");
             done();
@@ -34,7 +34,8 @@ describe('Utility Routing Service', () => {
                 BillingAccountNumber: 1234,
                 BillingAccountAddress: "123 main street2"
         };
-        request(options, function (error, response, json) {
+        request(options, function (error, response, body) {
+            let json = JSON.parse(body);
             expect(json).not.equal(null);
             expect(typeof json.timestamp).equal("number");
             expect(json.BillingUtilityIsAuthenticated).equal(false);
@@ -48,7 +49,9 @@ describe('Utility Routing Service', () => {
                 BillingAccountNumber: 123,
                 BillingAccountAddress: "123 main street"
         };
-        request(options, function (error, response, json) {
+        request(options, function (error, response, body) {
+            let json = JSON.parse(body);
+            console.log(json);
             expect(json).not.equal(null);
             expect(typeof json.timestamp).equal("number");
             expect(json.BillingUtilityIsAuthenticated).equal(true);
