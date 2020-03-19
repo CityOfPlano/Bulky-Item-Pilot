@@ -15,7 +15,7 @@
     "outDir" :"tmp",
     "moduleResolution": "node"
   },
-  "include": ["BulkyItemsPickupUtilityRoutingService.ts","./lib"],
+  "include": ["BulkyItemsPickupUtilityRoutingService.ts","./lib","./app"],
   "files": [
     "./node_modules/@types/mocha/index.d.ts",
     "./node_modules/@types/node/index.d.ts"
