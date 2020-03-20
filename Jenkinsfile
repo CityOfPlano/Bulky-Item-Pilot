@@ -13,8 +13,8 @@ pipeline {
 
     stage('Unit Test') {
       steps {
-        sh(label: 'Mocha Unit', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests.xml --ui bdd */**/*.spec.ts')
-        junit 'tmp/tests.xml'
+        sh(label: 'Mocha Unit', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests-unit.xml --ui bdd */**/*.spec.ts')
+        junit 'tmp/tests-unit.xml'
       }
     }
 
@@ -67,8 +67,8 @@ pipeline {
 
     stage('Integration Test') {
       steps {
-        sh(label: 'Mocha Integration', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests.xml --ui bdd */**/*.integration.ts')
-        junit 'tmp/tests.xml'
+        sh(label: 'Mocha Integration', script: 'node ./node_modules/mocha/bin/_mocha -r ts-node/register --reporter mocha-junit-reporter --reporter-options mochaFile=./tmp/tests-integration.xml --ui bdd */**/*.integration.ts')
+        junit 'tmp/tests-integration.xml'
       }
     }
 
