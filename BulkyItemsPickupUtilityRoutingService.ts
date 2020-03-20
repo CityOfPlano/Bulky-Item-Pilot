@@ -7,7 +7,12 @@ exports.handler = async (event) => {
     let msg = new ClientWizardState.ClientWizardState();
     if (event) {
         let body = event;
-
+        if (body.body){
+            body = body.body;
+        }
+        if (typeof body === 'string'){
+            body = JSON.parse(body);
+        }
         if (body.route) {
             switch (body.route) {
                 case "UtilityAuth":
