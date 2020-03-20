@@ -4,6 +4,7 @@ pipeline {
     stage('NPM & Setup') {
       steps {
         sh(label: 'NPM Install', script: 'npm install')
+        sh(label: 'NPM Lambda Install', script: 'cd config && npm install')
         sh(label: 'Make Dir Artifact', script: 'mkdir ./artifact')
         sh(label: 'Make Dir Node Modules', script: 'mkdir ./artifact/node_modules')
         sh(label: 'Make Dir Lib', script: 'mkdir ./artifact/lib')
