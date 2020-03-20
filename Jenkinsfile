@@ -4,6 +4,9 @@ pipeline {
     stage('NPM & Setup') {
       steps {
         sh(label: 'NPM Install', script: 'npm install')
+        sh(label: 'Make Dir Artifact', script: 'mkdir ./artifact')
+        sh(label: 'Make Dir Node Modules', script: 'mkdir ./artifact/node_modules')
+        sh(label: 'Make Dir Lib', script: 'mkdir ./artifact/lib')
       }
     }
 
@@ -38,8 +41,6 @@ pipeline {
       steps {
         sh(label: 'Copy Entry', script: 'cp ./tmp/BulkyItemsPickupUtilityRoutingService.js ./artifact/index.js')
         sh(label: 'Copy Package.json', script: 'cp ./config/package.json ./artifact/package.json')
-        sh(label: 'Make Dir Node Modules', script: 'mkdir ./artifact/node_modules')
-        sh(label: 'Make Dir Lib', script: 'mkdir ./artifact/lib')
         sh(label: 'Copy Node Modules', script: 'cp -r ./config/node_modules ./artifact/')
         sh(label: 'Copy Lib', script: 'cp -r ./tmp/lib ./artifact/')
         sh(label: 'ZIP Distributable', script: 'cd ./artifact && zip -r ./BulkyItemsPickupUtilityRoutingService.zip ./index.js ./package.json ./node_modules/* ./lib/*')
