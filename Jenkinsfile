@@ -25,16 +25,7 @@ pipeline {
       }
     }
 
-    stage('TypeScript Applications') {
-      steps {
-        sh(label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-app.json')
-        sh(label: 'Include Views', script: 'cp -r ./app/view ./tmp/app')
-        sh(label: 'SASS Compile', script: './node_modules/.bin/sass ./static/css/styles.scss ./static/css/styles.css')
-        sh(label: 'Webpack', script: 'node ./node_modules/webpack-cli/bin/cli.js')
-      }
-    }
-
-    stage('Build Artifact') {
+    stage('Build Services Artifact') {
       steps {
         sh(label: 'Copy Entry', script: 'cp ./tmp/BulkyItemsPickupUtilityRoutingService.js ./artifact/index.js')
         sh(label: 'Copy Package.json', script: 'cp ./config/package.json ./artifact/package.json')
@@ -44,6 +35,14 @@ pipeline {
       }
     }
 
+    stage('TypeScript Applications') {
+      steps {
+        sh(label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-app.json')
+        sh(label: 'Include Views', script: 'cp -r ./app/view ./tmp/app')
+        sh(label: 'SASS Compile', script: './node_modules/.bin/sass ./static/css/styles.scss ./static/css/styles.css')
+        sh(label: 'Webpack', script: 'node ./node_modules/webpack-cli/bin/cli.js')
+      }
+    }
     stage('Deploy Services to Staging') {
       parallel {
         stage('Lambda') {
