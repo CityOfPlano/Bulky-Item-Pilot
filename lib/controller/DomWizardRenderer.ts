@@ -1,6 +1,6 @@
-import WizardControlsView from "../../app/view/WizardControlsView.html";
-import WizardFooterView from "../../app/view/WizardFooterView.html";
-import WizardResetView from "../../app/view/WizardResetView.html";
+import WizardControlsView from "../../app/view/wizard/WizardControlsView.html";
+import WizardFooterView from "../../app/view/wizard/WizardFooterView.html";
+import WizardResetView from "../../app/view/wizard/WizardResetView.html";
 import {Wizard} from "./Wizard";
 import {WizardRenderer} from "../interface/WizardRenderer";
 import {ClientWizardState} from "../WizardState";
@@ -49,7 +49,7 @@ export class DomWizardRenderer implements WizardRenderer {
     generateProgressBar(wizard: Wizard){
         let str = [];
         for (let i= 0; i< wizard.steps.length; i++){
-            str.push(`<div class="step ${wizard.getStep().index>=i?"completed":""} ${wizard.current_index==i?"selected":""}" id="${i}"></div>`);
+            str.push(`<div class="step ${wizard.getStep().index>i||wizard.current_index>i?"completed":""} ${wizard.current_index==i?"selected":""}" id="${i}"><div class="tooltip">${wizard.steps[i].name}</div></div>`);
         }
         return `<div class="steps">${str.join("")}</div>`;
     }

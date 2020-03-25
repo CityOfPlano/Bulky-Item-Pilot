@@ -1,11 +1,12 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepCustomerNotifyView from '../view/StepCustomerNotifyView.html';
+import StepCustomerNotifyView from '../view/wizard/StepCustomerNotifyView.html';
 import {StringTemplate} from "../../lib/StringTemplate";
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass, ClearValidationClass, ValidateNumberField} from "../../lib/util/ValidateField";
 
 export class StepCustomerNotify implements WizardStep {
-
+    name = "Notification";
+    has_viewed = false;
     render(wizard: Wizard): string {
         return new StringTemplate(StepCustomerNotifyView).apply(wizard.getState());
     }
@@ -62,6 +63,7 @@ export class StepCustomerNotify implements WizardStep {
         }
 
         notify_button_next.onclick = function () {
+            self.has_viewed = true;
             wizard.nextStep();
         };
         self.update(wizard.getState());
@@ -90,7 +92,7 @@ export class StepCustomerNotify implements WizardStep {
     }
 
     is_satisfied(wizard: Wizard): boolean {
-        return false;
+        return this.has_viewed;
     }
 
 }

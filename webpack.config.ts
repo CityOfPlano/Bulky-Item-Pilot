@@ -5,7 +5,8 @@ const path = require('path');
 const frontend = {
     mode: 'production',
     entry: {
-        Customer: './tmp/app/Customer.js'
+        Customer: './tmp/app/Customer.js',
+        CSR: './tmp/app/CSR.js'
     },
     output: {
         path: path.join(__dirname, 'static/js/'),

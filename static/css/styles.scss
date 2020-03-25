@@ -7,6 +7,7 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 0.96);
   display: none;
+  z-index: 1;
 }
 
 #overlay > div {
@@ -124,7 +125,33 @@ label, .tip-text {
   border: 2px solid #ACACA6;
   border-radius: 50%;
   transition: background 1s;
+
+  .tooltip {
+    position: absolute;
+    top: 24px;
+    transform: translateX(calc(-50% + 10px));
+    font-size: 8pt;
+    text-transform: uppercase;
+    color: #ACACA6;
+    font-weight: bold;
+    display:none;
+  }
 }
+
+.step:hover .tooltip {
+  display:block;
+}
+
+.step:first-of-type .tooltip {
+  left: 0;
+  transform: none;
+}
+
+.step:last-of-type .tooltip {
+  right: 2px;
+  transform: none;
+}
+
 .step.completed {
   border: 2px solid #4B81BD;
   background: #4B81BD;
@@ -133,13 +160,21 @@ label, .tip-text {
   border: 2px solid #4B81BD;
   background: #fff;
 }
+.step.selected .tooltip, .step.completed .tooltip {
+  color: #4B81BD;
+}
+.step.selected .tooltip {
+  display: block;
+}
+
 .progress {
   position: absolute;
-  width: calc(100% - 18pt);
+  width: calc(100% - 44px);
   top: calc(50% - 1px);
   height: 2px;
   background: #ACACA6;
   z-index: -1;
+  left: 22px;
 }
 .percent {
   position: absolute;

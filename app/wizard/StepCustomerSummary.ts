@@ -1,10 +1,10 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepCustomerSummaryView from '../view/StepCustomerSummaryView.html';
+import StepCustomerSummaryView from '../view/wizard/StepCustomerSummaryView.html';
 import {StringTemplate} from "../../lib/StringTemplate";
 import {PickupTypeOptions} from "../../lib/enum/PickupType";
 
 export class StepCustomerSummary implements WizardStep {
-
+    name = "Summary";
     has_landed = false;
 
     render(wizard: Wizard): string {

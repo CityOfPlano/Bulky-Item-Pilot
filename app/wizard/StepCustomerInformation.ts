@@ -1,7 +1,7 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepCustomerInformationView from '../view/StepCustomerInformationView.html';
+import StepCustomerInformationView from '../view/wizard/StepCustomerInformationView.html';
 import {StringTemplate} from "../../lib/StringTemplate";
-import ModalLoadingView from "../view/ModalLoadingView.html";
+import ModalLoadingView from "../view/wizard/ModalLoadingView.html";
 import {LambdaProvider} from "../../lib/LambdaProvider";
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass} from "../../lib/util/ValidateField";
@@ -10,6 +10,7 @@ import {PickupType, PickupTypeOptions} from "../../lib/enum/PickupType";
 export class StepCustomerInformation implements WizardStep {
 
     has_viewed = false;
+    name = "Account";
 
     render(wizard: Wizard): string {
         let options = [];

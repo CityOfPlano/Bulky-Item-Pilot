@@ -1,9 +1,11 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepDisclaimerView from '../view/StepDisclaimerView.html';
+import StepDisclaimerView from '../view/wizard/StepDisclaimerView.html';
 import {ClientWizardState} from "../../lib/WizardState";
 import {ValidateNumberField} from "../../lib/util/ValidateField";
 
 export class StepDisclaimer implements WizardStep {
+
+    name = "Disclaimer";
 
     render(wizard:Wizard): string {
         return StepDisclaimerView;

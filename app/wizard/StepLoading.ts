@@ -1,8 +1,8 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepLoadingView from '../view/StepLoadingView.html';
+import StepLoadingView from '../view/wizard/StepLoadingView.html';
 
 export class StepLoading implements WizardStep {
-
+    name = "Loading";
     public has_loaded = false;
 
     render(): string {

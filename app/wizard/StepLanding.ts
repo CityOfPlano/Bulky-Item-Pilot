@@ -1,10 +1,10 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepLandingView from '../view/StepLandingView.html';
+import StepLandingView from '../view/wizard/StepLandingView.html';
 
 export class StepLanding implements WizardStep {
 
     has_landed = false;
-
+    name = "Start";
     render(wizard:Wizard): string {
         return StepLandingView;
     }

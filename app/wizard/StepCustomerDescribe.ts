@@ -1,11 +1,11 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepCustomerDescribeView from '../view/StepCustomerDescribeView.html';
+import StepCustomerDescribeView from '../view/wizard/StepCustomerDescribeView.html';
 import {StringTemplate} from "../../lib/StringTemplate";
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass, ClearValidationClass, ValidateNumberField} from "../../lib/util/ValidateField";
 
 export class StepCustomerDescribe implements WizardStep {
-
+    name = "Pickup Info";
     render(wizard: Wizard): string {
         return new StringTemplate(StepCustomerDescribeView).apply(wizard.getState());
     }

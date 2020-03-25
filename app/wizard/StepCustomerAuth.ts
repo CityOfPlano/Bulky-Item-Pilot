@@ -1,12 +1,14 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepCustomerAuthView from '../view/StepCustomerAuthView.html';
-import ModalLoadingView from '../view/ModalLoadingView.html';
+import StepCustomerAuthView from '../view/wizard/StepCustomerAuthView.html';
+import ModalLoadingView from '../view/wizard/ModalLoadingView.html';
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass, ClearValidationClass, ValidateNumberField} from "../../lib/util/ValidateField";
 import {LambdaProvider} from "../../lib/LambdaProvider";
 import {CustomerUtiligyAuth} from "../../lib/interface/CustomerUtiligyAuth";
 
 export class StepCustomerAuth implements WizardStep {
+
+    name = "Verify";
 
     render(wizard: Wizard): string {
         return StepCustomerAuthView;

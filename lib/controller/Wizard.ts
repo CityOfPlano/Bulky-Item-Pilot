@@ -84,6 +84,9 @@ export class Wizard {
 }
 
 export interface WizardStep {
+
+    name:string;
+
     render(wizard: Wizard): string;
 
     focus(wizard: Wizard): void;

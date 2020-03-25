@@ -1,12 +1,12 @@
 import {Wizard, WizardStep} from "../../lib/controller/Wizard";
-import StepCustomerDateView from '../view/StepCustomerDateView.html';
+import StepCustomerDateView from '../view/wizard/StepCustomerDateView.html';
 import {StringTemplate} from "../../lib/StringTemplate";
 import {ClientWizardState} from "../../lib/WizardState";
 import {AddValidationClass, ClearValidationClass, ValidateNumberField} from "../../lib/util/ValidateField";
 import {Calendar} from "../../lib/controller/Calendar";
 
 export class StepCustomerDate implements WizardStep {
-
+    name = "Pickup Date";
     private calendar:Calendar;
 
     render(wizard: Wizard): string {
