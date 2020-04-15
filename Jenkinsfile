@@ -18,7 +18,6 @@ pipeline {
       }
     }
 
-
     stage('TypeScript Services') {
       steps {
         sh(label: 'TypeScript', script: 'node ./node_modules/typescript/bin/tsc --p tsconfig-service.json')
@@ -43,6 +42,7 @@ pipeline {
         sh(label: 'Webpack', script: 'node ./node_modules/webpack-cli/bin/cli.js')
       }
     }
+
     stage('Deploy Services to Staging') {
       parallel {
         stage('Lambda') {

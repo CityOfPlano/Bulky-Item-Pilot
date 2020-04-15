@@ -20,6 +20,8 @@ describe('Wizard', () => {
             return "Yay!";
         }
 
+        name: string;
+
     }
 
     class ExampleStep2 implements WizardStep {
@@ -34,6 +36,8 @@ describe('Wizard', () => {
         render(): string {
             return "Yay!2";
         }
+
+        name: string;
 
     }
 

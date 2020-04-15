@@ -49,6 +49,7 @@ describe('Utility Routing Service', () => {
                 BillingAccountNumber: 123,
                 BillingAccountAddress: "123 main street"
         };
+
         request(options, function (error, response, body) {
             let json = body;
             console.log(body);
@@ -57,6 +58,7 @@ describe('Utility Routing Service', () => {
             expect(json.BillingUtilityIsAuthenticated).equal(true);
             done();
         });
+
     });
 
 });

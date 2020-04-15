@@ -32,15 +32,19 @@ export class DomWizardRenderer implements WizardRenderer {
                 let modal_button_cancel: HTMLButtonElement = <HTMLButtonElement>document.getElementById("modal_button_cancel");
                 let modal_button_reset: HTMLButtonElement = <HTMLButtonElement>document.getElementById("modal_button_reset");
 
-                modal_button_cancel.onclick = function(){
-                    self.clearModal();
-                };
+                if (modal_button_cancel) {
+                    modal_button_cancel.onclick = function () {
+                        self.clearModal();
+                    };
+                }
 
-                modal_button_reset.onclick = function(){
-                    wizard.useState(new ClientWizardState());
-                    wizard.setStep(0);
-                    wizard.render();
-                };
+                if (modal_button_reset) {
+                    modal_button_reset.onclick = function () {
+                        wizard.useState(new ClientWizardState());
+                        wizard.setStep(0);
+                        wizard.render();
+                    };
+                }
 
             };
         }

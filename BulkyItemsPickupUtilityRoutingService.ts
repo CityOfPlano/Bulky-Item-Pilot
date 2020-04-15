@@ -1,3 +1,5 @@
+import {MYSQLTables} from "./lib/MYSQLTables";
+
 exports.handler = async (event) => {
     const ClientWizardState = require("./lib/WizardState");
     const MySQLDriver = require("./lib/MySQLDriver");
@@ -14,6 +16,9 @@ exports.handler = async (event) => {
             body = JSON.parse(body);
         }
         if (body.route) {
+
+            let mysqlTable = new MYSQLTables();
+
             switch (body.route) {
                 case "UtilityAuth":
                     msg.BillingAccountNumber = body.BillingAccountNumber;
@@ -26,9 +31,20 @@ exports.handler = async (event) => {
                         msg.InformationUsedFreePickups = 0;
                     }
 
-                   msg['db'] = await mySQLDriver.query();
+                   //msg['db'] = await mySQLDriver.query();
 
                     break;
+
+                case "SubmitRequest":
+                    msg['db'] = await mySQLDriver.query(mysqlTable.getInsertValuesFromClientWizardState(body));
+
+                    break;
+
+                case "GetRequests":
+                    msg['db'] = await mySQLDriver.query(`SELECT * FROM requests`);
+
+                    break;
+
                 default:
 
                     break;
