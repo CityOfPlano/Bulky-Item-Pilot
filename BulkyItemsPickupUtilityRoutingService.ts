@@ -40,9 +40,32 @@ exports.handler = async (event) => {
 
                     break;
 
-                case "GetRequests":
-                    msg['db'] = await mySQLDriver.query(`SELECT * FROM requests`);
+                case "CloseRequest":
+                   await mySQLDriver.query(`UPDATE requests SET workOrderStatusId=0, pickupDriverNotes='${body.params.pickupDriverNotes||''}', pickupExtraCharges='${body.params.pickupExtraCharges||''}' WHERE pickupId=${body.params.pickupId}`);
+                    msg['query'] = `SELECT * FROM requests WHERE workOrderStatusId=1`;
+                    msg['db'] = await mySQLDriver.query(msg['query']);
+                    break;
 
+                case "GetRequests":
+                    let where = '';
+                    if (body.params){
+                        let options = [];
+                        if (body.params.filterDate){
+                            options.push(` customerPickupDate = '${body.params.filterDate}'`);
+                        }
+                        if (body.params.pickupStatus!==undefined){
+                            options.push(` workOrderStatusId = ${body.params.pickupStatus}`);
+                        }
+                        if (options.length){
+                            where = ` WHERE ${options.join(' AND ')}`;
+                        }
+                    }
+                    msg['query'] = `SELECT * FROM requests ${where}`;
+                    msg['db'] = await mySQLDriver.query(msg['query']);
+                    break;
+
+                case "DropTables":
+                    msg['db'] = await mySQLDriver.query(`DROP TABLE requests`);
                     break;
 
                 default:

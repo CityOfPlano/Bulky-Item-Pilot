@@ -14,7 +14,7 @@ export class StringTemplate {
     apply(template_key_value: any) {
         let s = ''.concat(this.getContents());
         for (let data in template_key_value) {
-            s = replaceAll(s, '{' + (data) + '}', template_key_value[data]);
+            s = replaceAll(s, '{' + (data) + '}', (template_key_value[data]!==undefined&&template_key_value[data]!==null)?template_key_value[data]:'');
         }
         return s;
     }

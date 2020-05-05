@@ -21,6 +21,8 @@ export class MYSQLTables {
             `customerNotifyEmail VARCHAR(200)`,
             `customerNotifyByEmail TINYINT(1)`,
             `customerNotifyByPhone TINYINT(1)`,
+            `pickupDriverNotes VARCHAR(20)`,
+            `pickupExtraCharges VARCHAR(20)`
         ];
 
         return `CREATE TABLE requests (${cols.join(', ')})`;

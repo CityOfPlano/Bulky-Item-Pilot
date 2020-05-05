@@ -1,10 +1,10 @@
 import {StringTemplate} from "../../lib/StringTemplate";
-import StepCustomerContactView from "../view/wizard/StepCustomerContactView.html";
+import CSRLandingView from "../view/CSRLandingView.html";
 
 export class CSRLanding {
 
     render(): string {
-        return new StringTemplate(StepCustomerContactView).getContents();
+        return new StringTemplate(CSRLandingView).getContents();
     }
 
     focus(): void {

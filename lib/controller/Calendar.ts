@@ -248,3 +248,11 @@ export class Calendar {
     }
 
 }
+
+
+export function getTodayDate(){
+let current_month = (new Date()).getMonth();
+let current_year = (new Date()).getFullYear();
+let current_day = (new Date()).getDate();
+        return `${current_day}/${current_month + 1}/${current_year}`;
+}
