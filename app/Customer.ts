@@ -15,8 +15,8 @@ import {StepCustomerSummary} from "./wizard/StepCustomerSummary";
 let renderer = new DomWizardRenderer();
 let wizard = new Wizard(document.body, renderer);
 wizard.useState(new ClientWizardState());
-wizard.getState().BillingAccountNumber = 1234;
-wizard.getState().BillingAccountAddress = "1234 Main Street";
+wizard.getState().BillingAccountNumber = 111;
+wizard.getState().BillingAccountAddress = "111 Main Street";
 
 let step_loading = new StepLoading();
 
